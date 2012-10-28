@@ -1,1 +1,3 @@
+v0.1.2, 2012-10-28 -- Little change.
+v0.1.1, 2012-10-28 -- Added nouns.txt.
 v0.1.0, 2012-10-28 -- Initial release.

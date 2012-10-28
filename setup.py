@@ -4,10 +4,11 @@ from distutils.core import setup
 
 setup(
     name='RandomWords',
-    version='0.1.0',
+    version='0.1.2',
     author='Tomek Święcicki',
     author_email='tomislater@gmail.com',
     packages=['random_words', 'random_words.test'],
+    package_data={'random_words': ['nouns.txt']},
     url='https://github.com/tomislater/RandomWords',
     license='LICENSE.txt',
     description='A useful module for random text.',
@@ -17,5 +18,4 @@ setup(
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python',
     ],
-    data_files=[('random_words', ['nouns.txt'])],
 )

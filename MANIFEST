@@ -2,6 +2,7 @@
 README.md
 setup.py
 random_words/__init__.py
+random_words/nouns.txt
 random_words/random_words.py
 random_words/test/__init__.py
 random_words/test/tests.py

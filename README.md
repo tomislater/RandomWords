@@ -17,6 +17,15 @@ Install
 
 Quick way: `pip install RandomWords`
 
+or:
+
+`git clone https://github.com/tomislater/RandomWords.git`
+
+`cd RandomWords`
+
+`python setup.py install`
+
+
 How to use
 ----------
 

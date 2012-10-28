@@ -8,7 +8,7 @@ setup(
     author='Tomek Święcicki',
     author_email='tomislater@gmail.com',
     packages=['random_words', 'random_words.test'],
-    package_data={'random_words': ['nouns.txt']},
+    package_data={'': ['*.txt']},
     url='https://github.com/tomislater/RandomWords',
     license='LICENSE.txt',
     description='A useful module for random text.',

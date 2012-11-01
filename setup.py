@@ -4,7 +4,7 @@ from distutils.core import setup
 
 setup(
     name='RandomWords',
-    version='0.1.2',
+    version='0.1.3',
     author='Tomek Święcicki',
     author_email='tomislater@gmail.com',
     packages=['random_words', 'random_words.test'],
@@ -12,7 +12,7 @@ setup(
     url='https://github.com/tomislater/RandomWords',
     license='LICENSE.txt',
     description='A useful module for random text.',
-    long_description=open('README.md').read(),
+    long_description=open('README.txt').read(),
     classifiers=[
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',

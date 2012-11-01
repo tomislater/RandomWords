@@ -15,19 +15,21 @@ Requirements
 Install
 -------
 
-Quick way: `pip install RandomWords`
+Quick way::
 
-or:
+    pip install RandomWords
 
-`git clone https://github.com/tomislater/RandomWords.git`
+or::
 
-`cd RandomWords`
-
-`python setup.py install`
+    git clone https://github.com/tomislater/RandomWords.git
+    cd RandomWords
+    python setup.py install
 
 How to use
 ----------
-###### Random words
+
+*Random words*::
+
     >>> from random_words import RandomWords
     >>> rw = RandomWords()
     >>> word = rw.random_word()
@@ -50,7 +52,8 @@ How to use
     >>> print words
     ['tides', 'eights']
 
-###### Random nicks
+*Random nicks*::
+
     >>> from random_words import RandomNicknames
     >>> rn = RandomNicknames()
     

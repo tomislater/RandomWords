@@ -1,0 +1,77 @@
+<h1 id="randomwords">RandomWords</h1>
+<h2 id="overview">Overview</h2>
+<p>RandomWords is a useful package for generate random words, nicks and senteces (soon).</p>
+<h2 id="requirements">Requirements</h2>
+<ul>
+<li>Python 2.6 or 2.7</li>
+<li>Liunx, Windows?, Mac OSX?, BSD?</li>
+</ul>
+<h2 id="install">Install</h2>
+<p>Quick way: <code>pip install RandomWords</code></p>
+<p>or:</p>
+<p><code>git clone https://github.com/tomislater/RandomWords.git</code></p>
+<p><code>cd RandomWords</code></p>
+<p><code>python setup.py install</code></p>
+<h2 id="how-to-use">How to use</h2>
+<h6 id="random-words">Random words</h6>
+<pre><code>&gt;&gt;&gt; from random_words import RandomWords
+&gt;&gt;&gt; rw = RandomWords()
+&gt;&gt;&gt; word = rw.random_word()
+&gt;&gt;&gt; print word
+factors
+
+&gt;&gt;&gt; word = rw.random_word('y')
+&gt;&gt;&gt; print word
+yards
+
+&gt;&gt;&gt; words = rw.random_words(count=10)
+&gt;&gt;&gt; print words
+['runs', 'experience', 'comments', 'freedom', 'permit', 'honks', 'pins', 'texts', 'grant', 'fathers']
+
+&gt;&gt;&gt; words = rw.random_words(letter='r', count=5)
+&gt;&gt;&gt; print words
+['raincoat', 'reactance', 'room', 'relocation', 'rudders']
+
+&gt;&gt;&gt; words = rw.random_words(letter=None, count=2)
+&gt;&gt;&gt; print words
+['tides', 'eights']
+</code></pre>
+<h6 id="random-nicks">Random nicks</h6>
+<pre><code>&gt;&gt;&gt; from random_words import RandomNicknames
+&gt;&gt;&gt; rn = RandomNicknames()
+
+&gt;&gt;&gt; rn.random_nick()
+'Fredrick'
+
+&gt;&gt;&gt; rn.random_nick('y')
+'York'
+
+&gt;&gt;&gt; rn.random_nick(letter='r', gender='m')
+'Roosevelt'
+
+&gt;&gt;&gt; rn.random_nick(letter='r', gender='f')
+'Rene'
+
+&gt;&gt;&gt; rn.random_nicks()
+['Fionn']
+
+&gt;&gt;&gt; rn.random_nicks(count=10)
+['Kristy', 'Imani', 'Delbert', 'Brevyn', 'Jasmin', 'Genevieve', 'Clodagh', 'Graham', 'Sondra', 'Ed']
+
+&gt;&gt;&gt; rn.random_nicks(letter='u', gender='f', count=4)
+['Una', 'Uma', 'Ursula', 'Ulrica']
+
+&gt;&gt;&gt; rn.random_nicks(letter='a', gender='m', count=4)
+['Anthony', 'Alec', 'Antonio', 'Adam']
+
+&gt;&gt;&gt; rn.random_nicks(gender='m', count=5)
+['Elijah', 'Abraham', 'Noel', 'Myles', 'Pedro']
+
+&gt;&gt;&gt; rn.random_nicks(gender='f', count=5)
+['Sabrina', 'Debbie', 'Jerri', 'Savannah', 'Wendy']
+</code></pre>
+<h2 id="todo">TODO</h2>
+<ul>
+<li>random sentence/sentences</li>
+<li>random lorem ipsum</li>
+</ul>

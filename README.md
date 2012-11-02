@@ -1,5 +1,5 @@
 RandomWords
-============
+===========
 
 Overview
 --------
@@ -27,6 +27,7 @@ or:
 
 How to use
 ----------
+
 ###### Random words
     >>> from random_words import RandomWords
     >>> rw = RandomWords()

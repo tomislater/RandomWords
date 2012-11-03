@@ -12,12 +12,20 @@ class Random(dict):
         self.load_file(file)
 
     def load_file(self, file):
-            if file == 'nouns':
-                self.load_nouns(file)
-            elif file == 'nicknames':
-                self.load_nicknames(file)
+        """Opening file.
+
+        :param str file: filename
+        """
+        if file == 'nouns':
+            self.load_nouns(file)
+        elif file == 'nicknames':
+            self.load_nicknames(file)
 
     def load_nouns(self, file):
+        """Making dict for words.
+
+        :param str file: filename
+        """
         with open(os.path.join(main_dir, file + '.txt'), 'r') as f:
             for word in f:
                 word = word.strip()
@@ -29,6 +37,10 @@ class Random(dict):
                     self[letter] = [word]
 
     def load_nicknames(self, file):
+        """Making dict for words.
+
+        :param str file: filename
+        """
         self['f'] = dict()
         self['m'] = dict()
         self['u'] = dict()
@@ -48,6 +60,11 @@ class Random(dict):
                     self['u'][letter] = [nick]
 
     def check_count(self, count):
+        """Checks count
+
+        :param int count: count number ;)
+        :raises: ValueError
+        """
         if count < 1:
             raise ValueError('Param "count" must be greater than 0.')
 

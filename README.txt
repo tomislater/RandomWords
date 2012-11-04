@@ -87,6 +87,22 @@ How to use
     >>> rn.random_nicks(gender='f', count=5)
     ['Sabrina', 'Debbie', 'Jerri', 'Savannah', 'Wendy']
 
+*Lorem ipsum*::
+
+    >>> from random_words import LoremIpsum
+    >>> li = LoremIpsum()
+    >>> li.get_sentence()
+    'Commodo gubergren fringilla curabitur quam volutpatut.'
+    
+    >>> li.get_sentence(max_words=22)  # random sample from 3 to 22 ;)
+    'Voluptua curae; facilisi mi auctormauris neque enim aliquam stet odio sedfusce porttitor magnis ultrices.'
+
+    >>> li.get_sentences(max_words=5, sentences=3)
+    'Tortor mazim nobis ex. Luptatum assum rhoncus labore. Nequeetiam montes nibh.'
+    
+    >>> li.get_sentences_list(max_words=13, sentences=5)
+    ['Torquent per duo aaenean accumsannulla magnapraesent sollicitudin eirmod duis lobortisetiam minim metusdonec.', 'Possim egestasmauris accumsannulla netus cubilia suspendisse qui facer enimsed nonummy.', 'Congue faucibusvestibulum conubia lectus laoreet dignissim tortorcurabitur natoque voluptua penatibus facilisinam.', 'Ante semper sociis leo.', 'Dignissim arcu sea metus sed ultriciespellentesque malesuadanullam wisi nullamauris.']
+
 TODO
 ----
 

@@ -5,6 +5,8 @@ README.md
 README.txt
 setup.py
 random_words/__init__.py
+random_words/lorem_ipsum.py
+random_words/lorem_ipsum.txt
 random_words/nicknames.txt
 random_words/nouns.txt
 random_words/random_words.py

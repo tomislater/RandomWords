@@ -6,6 +6,8 @@ import random
 from random_words import RandomWords
 from random_words import RandomNicknames
 
+from random_words import LoremIpsum
+
 
 class TestsRandomWords(unittest.TestCase):
 
@@ -19,13 +21,12 @@ class TestsRandomWords(unittest.TestCase):
             self.assertEqual(word[0], letter)
 
     def test_random_word_value_error(self):
-        with self.assertRaises(ValueError):
-            self.rw.random_word('x')
-            self.rw.random_word(0)
-            self.rw.random_word(-1)
-            self.rw.random_word(9)
-            self.rw.random_words(['u'])
-            self.rw.random_word('fs')
+        self.assertRaises(ValueError, self.rw.random_word, 'x')
+        self.assertRaises(ValueError, self.rw.random_word, 0)
+        self.assertRaises(ValueError, self.rw.random_word, -1)
+        self.assertRaises(ValueError, self.rw.random_word, 9)
+        self.assertRaises(ValueError, self.rw.random_word, ['u'])
+        self.assertRaises(ValueError, self.rw.random_word, 'fs')
 
     def test_random_words(self):
         for letter in self.letters:
@@ -34,15 +35,14 @@ class TestsRandomWords(unittest.TestCase):
                 self.assertEqual(word[0], letter)
 
     def test_random_words_value_error(self):
-        with self.assertRaises(ValueError):
-            self.rw.random_words('fa')
-            self.rw.random_words(['fha'])
-            self.rw.random_words(0)
-            self.rw.random_words(-1)
-            self.rw.random_words(count=0)
-            self.rw.random_words(count=None)
-            self.rw.random_words(count=[8])
-            self.rw.random_words(count=-5)
+        self.assertRaises(ValueError, self.rw.random_words, 'fa')
+        self.assertRaises(ValueError, self.rw.random_words, ['fha'])
+        self.assertRaises(ValueError, self.rw.random_words, 0)
+        self.assertRaises(ValueError, self.rw.random_words, -1)
+        self.assertRaises(ValueError, self.rw.random_words, count=0)
+        self.assertRaises(ValueError, self.rw.random_words, count=None)
+        self.assertRaises(ValueError, self.rw.random_words, count=[8])
+        self.assertRaises(ValueError, self.rw.random_words, count=-5)
 
     def test_random_words_length_list(self):
         len_words = len(self.rw.random_words())
@@ -61,8 +61,7 @@ class TestsRandomWords(unittest.TestCase):
 
         len_random = 1000000
         for letter in self.letters:
-            with self.assertRaises(ValueError):
-                self.rw.random_words(letter, count=len_random)
+            self.assertRaises(ValueError, self.rw.random_words, letter, count=len_random)
 
 
 class TestsRandomNicknames(unittest.TestCase):
@@ -78,18 +77,17 @@ class TestsRandomNicknames(unittest.TestCase):
             self.assertEqual(nick[0].lower(), letter)
 
     def test_random_nick_value_error(self):
-        with self.assertRaises(ValueError):
-            self.rn.random_nick(gender='a')
-            self.rn.random_nick('Ź', 'f')
-            self.rn.random_nick('ż', 'm')
-            self.rn.random_nick('ą', None)
-            self.rn.random_nick('ż')
-            self.rn.random_nick(0)
-            self.rn.random_nick(-1, None)
-            self.rn.random_nick(9)
-            self.rn.random_nick(9, None)
-            self.rn.random_nick(['u'])
-            self.rn.random_nick('fs')
+        self.assertRaises(ValueError, self.rn.random_nick, 'a')
+        self.assertRaises(ValueError, self.rn.random_nick, 'Ź', 'f')
+        self.assertRaises(ValueError, self.rn.random_nick, 'ż', 'm')
+        self.assertRaises(ValueError, self.rn.random_nick, 'ą', None)
+        self.assertRaises(ValueError, self.rn.random_nick, 'ż')
+        self.assertRaises(ValueError, self.rn.random_nick, 0)
+        self.assertRaises(ValueError, self.rn.random_nick, -1, None)
+        self.assertRaises(ValueError, self.rn.random_nick, 9)
+        self.assertRaises(ValueError, self.rn.random_nick, 9, None)
+        self.assertRaises(ValueError, self.rn.random_nick, ['u'])
+        self.assertRaises(ValueError, self.rn.random_nick, 'fs')
 
     def test_random_nicks(self):
         genders = ('f', 'm')
@@ -101,9 +99,32 @@ class TestsRandomNicknames(unittest.TestCase):
     def test_random_nicks_count(self):
         len_random = 1000000
         for letter in self.letters:
-            with self.assertRaises(ValueError):
-                self.rn.random_nicks(letter, count=len_random)
+            self.assertRaises(ValueError, self.rn.random_nicks, letter, count=len_random)
 
+
+class TestsRandomNicknames(unittest.TestCase):
+
+    def setUp(self):
+        self.li = LoremIpsum()
+
+    def test_lorem_sentence(self):
+        self.assertEqual(type(self.li.get_sentence()), str)
+
+    def test_lorem_sentences(self):
+        self.assertEqual(type(self.li.get_sentences()), str)
+
+    def test_lorem_sentences_list(self):
+        self.assertEqual(type(self.li.get_sentences_list()), list)
+
+    def test_lorem_value_error(self):
+        self.assertRaises(ValueError, self.li.get_sentence, max_words=29999)
+        self.assertRaises(ValueError, self.li.get_sentences, max_words=9929)
+        self.assertRaises(ValueError, self.li.get_sentences_list, max_words=9929)
+        self.assertRaises(ValueError, self.li.get_sentence, max_words=0)
+        self.assertRaises(ValueError, self.li.get_sentence, max_words=-2)
+        self.assertRaises(ValueError, self.li.get_sentence, max_words=2)
+        self.assertRaises(ValueError, self.li.get_sentences, sentences=0)
+        self.assertRaises(ValueError, self.li.get_sentences, sentences=-2)
 
 if __name__ == "__main__":
     unittest.main()

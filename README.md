@@ -104,4 +104,3 @@ TODO
 ----
 
 * random sentence/sentences
-* random lorem ipsum

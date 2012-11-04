@@ -117,12 +117,6 @@ class TestsRandomNicknames(unittest.TestCase):
         self.assertEqual(type(self.li.get_sentences_list()), list)
 
     def test_lorem_value_error(self):
-        self.assertRaises(ValueError, self.li.get_sentence, max_words=29999)
-        self.assertRaises(ValueError, self.li.get_sentences, max_words=9929)
-        self.assertRaises(ValueError, self.li.get_sentences_list, max_words=9929)
-        self.assertRaises(ValueError, self.li.get_sentence, max_words=0)
-        self.assertRaises(ValueError, self.li.get_sentence, max_words=-2)
-        self.assertRaises(ValueError, self.li.get_sentence, max_words=2)
         self.assertRaises(ValueError, self.li.get_sentences, sentences=0)
         self.assertRaises(ValueError, self.li.get_sentences, sentences=-2)
 

@@ -89,16 +89,13 @@ How to use
     >>> from random_words import LoremIpsum
     >>> li = LoremIpsum()
     >>> li.get_sentence()
-    'Commodo gubergren fringilla curabitur quam volutpatut.'
+    'Luctus molestie mazim netus temporsuspendisse, tristique nihil vestibulumnulla clita possim.'
+ 
+    >>> li.get_sentences(5)
+    'Esse erosin magnis cursus, in ullamcorper sapien et accusam. Arcu fringilla metusdonec. Magna tempus elitr lorem esse antesuspendisse, mi fusce luctus lacusnulla nullam porta. Takimata tation porttitor, amet aliquammauris enimsed dapibus. Assum lectus accusam fermentumfusce, iaculis turpis senectus id nunccurabitur.'
     
-    >>> li.get_sentence(max_words=22)  # random sample from 3 to 22 ;)
-    'Voluptua curae; facilisi mi auctormauris neque enim aliquam stet odio sedfusce porttitor magnis ultrices.'
-
-    >>> li.get_sentences(max_words=5, sentences=3)
-    'Tortor mazim nobis ex. Luptatum assum rhoncus labore. Nequeetiam montes nibh.'
-    
-    >>> li.get_sentences_list(max_words=13, sentences=5)
-    ['Torquent per duo aaenean accumsannulla magnapraesent sollicitudin eirmod duis lobortisetiam minim metusdonec.', 'Possim egestasmauris accumsannulla netus cubilia suspendisse qui facer enimsed nonummy.', 'Congue faucibusvestibulum conubia lectus laoreet dignissim tortorcurabitur natoque voluptua penatibus facilisinam.', 'Ante semper sociis leo.', 'Dignissim arcu sea metus sed ultriciespellentesque malesuadanullam wisi nullamauris.']
+    >>> li.get_sentences_list(5)
+    ['Platea egestas delenit curae iaculis ullamcorper.', 'Felissed sagittis volutpat vitae, lacus nullam massapellentesque urnapraesent.', 'Dapibusnam vitae nulla, consectetuer conguenulla luptatum urnamorbi.', 'Ante nostra vero nihil eu odio.', 'Invidunt interdum condimentum ametduis, leopraesent tempus placerat aaenean ad.']
 
 TODO
 ----

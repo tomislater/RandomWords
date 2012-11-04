@@ -58,7 +58,7 @@ mattis
 nisl
 nostra
 sodalessed
-curae;
+curae
 viverra
 augue
 porta

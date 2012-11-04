@@ -4,7 +4,7 @@ from distutils.core import setup
 
 setup(
     name='RandomWords',
-    version='0.1.4',
+    version='0.1.5',
     author='Tomek Święcicki',
     author_email='tomislater@gmail.com',
     packages=['random_words', 'random_words.test'],

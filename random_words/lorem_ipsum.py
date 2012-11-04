@@ -7,7 +7,8 @@ main_dir = os.path.split(os.path.abspath(__file__))[0]
 
 
 class LoremIpsum(object):
-    MIN_WORDS = 3
+    MIN_WORDS = 2
+    MAX_WORDS = 15
 
     def __init__(self):
         self.words = set()
@@ -19,47 +20,38 @@ class LoremIpsum(object):
 
         self.words = frozenset(self.words)
 
-    def get_sentence(self, max_words=8):
+    def get_sentence(self):
         """
-        :param int max_words: max words in sentence
         :returns: string with sentence
         :rtype: str
         """
-        return self.get_sentences_list(max_words)[0]
+        return self.get_sentences_list()[0]
 
-    def get_sentences_list(self, max_words=8, sentences=1):
+    def get_sentences_list(self, sentences=1):
         """
-        :param int max_words: max words in sentence
         :param int sentences: how many sentences
         :returns: list of strings with sentence
         :rtype: list
         """
-        if max_words < self.MIN_WORDS:
-            raise ValueError('Param "max_words" must be greater than {0}.'.format(self.MIN_WORDS - 1))
-        elif max_words < 1:
-            raise ValueError('Param "max_words" must be greater than 0.')
-        elif sentences < 1:
+        if sentences < 1:
             raise ValueError('Param "sentences" must be greater than 0.')
-        elif max_words > len(self.words):
-            raise ValueError('Param "max_words" must be less than {0}.'.format(len(self.words) + 1))
 
         sentences_list = []
 
         while sentences:
-            num_rand_words = random.randint(self.MIN_WORDS, max_words)
+            num_rand_words = random.randint(self.MIN_WORDS, self.MAX_WORDS)
             random_sentence = self.make_sentence(random.sample(self.words, num_rand_words))
             sentences_list.append(random_sentence)
             sentences -= 1
         return sentences_list
 
-    def get_sentences(self, max_words=8, sentences=1):
+    def get_sentences(self, sentences=1):
         """
-        :param int max_words: max words in sentence
         :param int sentences: how many sentences
         :returns: string with sentences
         :rtype: str
         """
-        return ' '.join(self.get_sentences_list(max_words, sentences))
+        return ' '.join(self.get_sentences_list(sentences))
 
     def make_sentence(self, list_words):
         """Make a sentence from list of words
@@ -68,5 +60,8 @@ class LoremIpsum(object):
         :returns: sentence
         :rtype: str
         """
-        sentence = ' '.join(list_words)
+        lw_len = len(list_words)
+        if lw_len > 6:
+            list_words.insert(lw_len / 2 + random.choice(xrange(-2, 2)), ',')
+        sentence = ' '.join(list_words).replace(' ,', ',')
         return sentence[0].upper() + sentence[1:] + '.'

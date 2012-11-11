@@ -20,6 +20,8 @@ class Random(dict):
             self.load_nouns(file)
         elif file == 'nicknames':
             self.load_nicknames(file)
+        elif file == 'dmails':
+            self.load_dmails(file)
 
     def load_nouns(self, file):
         """Making dict for words.
@@ -35,6 +37,20 @@ class Random(dict):
                     self[letter].append(word)
                 except KeyError:
                     self[letter] = [word]
+
+    def load_dmails(self, file):
+        """Making set for random mails
+
+        :param str file: filename
+        """
+        self['domains'] = set()
+
+        with open(os.path.join(main_dir, file + '.txt'), 'r') as f:
+            for domain in f:
+                domain = domain.strip()
+                self['domains'].add(domain)
+
+        self['domains'] = frozenset(self['domains'])
 
     def load_nicknames(self, file):
         """Making dict for words.
@@ -65,6 +81,8 @@ class Random(dict):
         :param int count: count number ;)
         :raises: ValueError
         """
+        if type(count) is not int:
+            raise ValueError('Param "count" must be int.')
         if count < 1:
             raise ValueError('Param "count" must be greater than 0.')
 
@@ -186,3 +204,27 @@ class RandomNicknames(Random):
 (It is only {0} nicks for letter "{1}")'.format(len_sample + 1, letter))
 
         return nicks
+
+
+class RandomEmails(Random):
+    def __init__(self):
+        super(RandomEmails, self).__init__('dmails')
+        self.rn = RandomNicknames()
+
+    def randomMail(self):
+        """Method returns random e-mail
+
+        :rtype: str
+        :returns: random e-mail"""
+        return self.randomMails()[0]
+
+    def randomMails(self, count=1):
+        """Method returns random e-mails
+
+        :rtype: list
+        :returns: list of random e-mails"""
+        self.check_count(count)
+        random_nicks = self.rn.random_nicks(count=count)
+        random_domains = random.sample(self['domains'], count)
+
+        return [nick.lower() + "@" + domain for nick, domain in zip(random_nicks, random_domains)]

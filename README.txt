@@ -4,13 +4,7 @@ RandomWords
 Overview
 --------
 
-RandomWords is a useful package for generate random words, nicks and senteces (soon).
-
-Requirements
-------------
-
-* Python 2.6 or 2.7
-* Liunx, Windows?, Mac OSX?, BSD?
+RandomWords is a useful package for generate random words, nicks, e-mails and lorem ipsum.
 
 Install
 -------
@@ -86,6 +80,20 @@ How to use
 
     >>> rn.random_nicks(gender='f', count=5)
     ['Sabrina', 'Debbie', 'Jerri', 'Savannah', 'Wendy']
+
+*Random e-mails*::
+
+    >>> from random_words import RandomEmails
+    >>> rand_mails = RandomEmails()
+    
+    >>> rand_mails.randomMail()
+    'ernest@mail2java.com'
+    
+    >>> rand_mails.randomMails()
+    ['annmarie@mail2xox.com']
+
+    >>> rand_mails.randomMails(15)
+    ['patrice@keko.com.ar', 'conor@mail2atom.com', 'vihan@mail2carolyn.com', 'felicia@looksmart.com.au', 'quinlan@accessgcc.com', 'aimee@china.net.vg', 'kate@mail2christmas.com', 'geoffrey@frommiami.com', 'lillie@comic.com', 'trinity@nagpal.net', 'bennett@webmail.co.za', 'jesse@chaiyomail.com', 'chase@iespana.es', 'mya@ijustdontcare.com', 'ramona@uole.com']
 
 *Lorem ipsum*::
 

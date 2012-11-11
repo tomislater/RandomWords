@@ -5,6 +5,7 @@ import random
 
 from random_words import RandomWords
 from random_words import RandomNicknames
+from random_words import RandomEmails
 
 from random_words import LoremIpsum
 
@@ -119,6 +120,25 @@ class TestsRandomNicknames(unittest.TestCase):
     def test_lorem_value_error(self):
         self.assertRaises(ValueError, self.li.get_sentences, sentences=0)
         self.assertRaises(ValueError, self.li.get_sentences, sentences=-2)
+
+
+class TestsRandomEmails(unittest.TestCase):
+
+    def setUp(self):
+        self.re = RandomEmails()
+
+    def test_random_mail_type(self):
+        self.assertEqual(type(self.re.randomMail()), str)
+
+    def test_random_mails_type(self):
+        self.assertEqual(type(self.re.randomMails()), list)
+
+    def test_random_mails_count(self):
+        self.assertRaises(ValueError, self.re.randomMails, count=-1)
+        self.assertRaises(ValueError, self.re.randomMails, count=0)
+        self.assertRaises(ValueError, self.re.randomMails, count=list())
+        self.assertRaises(ValueError, self.re.randomMails, count=dict())
+        self.assertRaises(ValueError, self.re.randomMails, count=set())
 
 if __name__ == "__main__":
     unittest.main()

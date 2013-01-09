@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import os
+import ujson
 import random
 import itertools
 
@@ -24,56 +25,28 @@ class Random(dict):
             self.load_dmails(file)
 
     def load_nouns(self, file):
-        """Making dict for words.
+        """Load dict from file for random words.
 
         :param str file: filename
         """
-        with open(os.path.join(main_dir, file + '.txt'), 'r') as f:
-            for word in f:
-                word = word.strip()
-                letter = word[0]
-
-                try:
-                    self[letter].append(word)
-                except KeyError:
-                    self[letter] = [word]
+        with open(os.path.join(main_dir, file + '.dat'), 'r') as f:
+            self.nouns = ujson.load(f)
 
     def load_dmails(self, file):
-        """Making set for random mails
+        """Load list from file for random mails
 
         :param str file: filename
         """
-        self['domains'] = set()
-
-        with open(os.path.join(main_dir, file + '.txt'), 'r') as f:
-            for domain in f:
-                domain = domain.strip()
-                self['domains'].add(domain)
-
-        self['domains'] = frozenset(self['domains'])
+        with open(os.path.join(main_dir, file + '.dat'), 'r') as f:
+            self['domains'] = frozenset(ujson.load(f))
 
     def load_nicknames(self, file):
-        """Making dict for words.
+        """Load dict from file for random nicknames.
 
         :param str file: filename
         """
-        self['f'] = dict()
-        self['m'] = dict()
-        self['u'] = dict()
-
-        with open(os.path.join(main_dir, file + '.txt'), 'r') as f:
-            for word in f:
-                word = word.strip()
-                gender = word[0]
-                letter = word[1].lower()
-                nick = word[1:]
-
-                try:
-                    self[gender][letter].append(nick)
-                    self['u'][letter].append(nick)
-                except KeyError:
-                    self[gender][letter] = [nick]
-                    self['u'][letter] = [nick]
+        with open(os.path.join(main_dir, file + '.dat'), 'r') as f:
+            self.nicknames = ujson.load(f)
 
     def check_count(self, count):
         """Checks count
@@ -113,7 +86,7 @@ class RandomWords(Random):
         self.check_count(count)
 
         if letter is None:
-            all_words = list(itertools.chain.from_iterable(self.values()))
+            all_words = list(itertools.chain.from_iterable(self.nouns.values()))
 
             try:
                 words = random.sample(all_words, count)
@@ -130,9 +103,9 @@ class RandomWords(Random):
 
         elif letter in self.available_letters:
             try:
-                words = random.sample(self[letter], count)
+                words = random.sample(self.nouns[letter], count)
             except ValueError:
-                len_sample = len(self[letter])
+                len_sample = len(self.nouns[letter])
                 raise ValueError('Param "count" must be less than {0}. \
 (It is only {0} words for letter "{1}")'.format(len_sample + 1, letter))
 
@@ -175,7 +148,7 @@ class RandomNicknames(Random):
             else:
                 g = gender
 
-            all_nicks = list(itertools.chain.from_iterable(self[g].values()))
+            all_nicks = list(itertools.chain.from_iterable(self.nicknames[g].values()))
 
             try:
                 nicks = random.sample(all_nicks, count)
@@ -197,9 +170,9 @@ class RandomNicknames(Random):
                 g = 'u'
 
             try:
-                nicks = random.sample(self[g][letter], count)
+                nicks = random.sample(self.nicknames[g][letter], count)
             except ValueError:
-                len_sample = len(self[g][letter])
+                len_sample = len(self.nicknames[g][letter])
                 raise ValueError('Param "count" must be less than {0}. \
 (It is only {0} nicks for letter "{1}")'.format(len_sample + 1, letter))
 

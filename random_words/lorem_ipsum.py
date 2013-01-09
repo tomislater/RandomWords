@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import os
+import ujson
 import random
 
 main_dir = os.path.split(os.path.abspath(__file__))[0]
@@ -11,14 +12,8 @@ class LoremIpsum(object):
     MAX_WORDS = 15
 
     def __init__(self):
-        self.words = set()
-
-        with open(os.path.join(main_dir, 'lorem_ipsum.txt'), 'r') as f:
-            for word in f:
-                word = word.strip()
-                self.words.add(word)
-
-        self.words = frozenset(self.words)
+        with open(os.path.join(main_dir, 'lorem_ipsum.dat'), 'r') as f:
+            self.words = frozenset(ujson.load(f))
 
     def get_sentence(self):
         """

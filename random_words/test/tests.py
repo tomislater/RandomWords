@@ -109,10 +109,10 @@ class TestsRandomNicknames(unittest.TestCase):
         self.li = LoremIpsum()
 
     def test_lorem_sentence(self):
-        self.assertEqual(type(self.li.get_sentence()), str)
+        self.assertEqual(type(self.li.get_sentence()), unicode)
 
     def test_lorem_sentences(self):
-        self.assertEqual(type(self.li.get_sentences()), str)
+        self.assertEqual(type(self.li.get_sentences()), unicode)
 
     def test_lorem_sentences_list(self):
         self.assertEqual(type(self.li.get_sentences_list()), list)
@@ -128,7 +128,7 @@ class TestsRandomEmails(unittest.TestCase):
         self.re = RandomEmails()
 
     def test_random_mail_type(self):
-        self.assertEqual(type(self.re.randomMail()), str)
+        self.assertEqual(type(self.re.randomMail()), unicode)
 
     def test_random_mails_type(self):
         self.assertEqual(type(self.re.randomMails()), list)

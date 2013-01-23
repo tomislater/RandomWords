@@ -103,8 +103,3 @@ How to use
     
     >>> li.get_sentences_list(5)
     ['Platea egestas delenit curae iaculis ullamcorper.', 'Felissed sagittis volutpat vitae, lacus nullam massapellentesque urnapraesent.', 'Dapibusnam vitae nulla, consectetuer conguenulla luptatum urnamorbi.', 'Ante nostra vero nihil eu odio.', 'Invidunt interdum condimentum ametduis, leopraesent tempus placerat aaenean ad.']
-
-TODO
-----
-
-* random sentence/sentences

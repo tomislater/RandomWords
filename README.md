@@ -6,6 +6,10 @@ Overview
 
 RandomWords is a useful package for generate random words, nicks, e-mails and lorem ipsum.
 
+### PyPI status
+[![PyPi version](https://pypip.in/v/RandomWords/badge.png)](https://crate.io/packages/RandomWords/)
+[![PyPi downloads](https://pypip.in/d/RandomWords/badge.png)](https://crate.io/packages/RandomWords/)
+
 Install
 -------
 
@@ -48,31 +52,31 @@ How to use
 ###### Random nicks
     >>> from random_words import RandomNicknames
     >>> rn = RandomNicknames()
-    
+
     >>> rn.random_nick()
     'Fredrick'
-    
+
     >>> rn.random_nick('y')
     'York'
-    
+
     >>> rn.random_nick(letter='r', gender='m')
     'Roosevelt'
-    
+
     >>> rn.random_nick(letter='r', gender='f')
     'Rene'
-    
+
     >>> rn.random_nicks()
     ['Fionn']
-    
+
     >>> rn.random_nicks(count=10)
     ['Kristy', 'Imani', 'Delbert', 'Brevyn', 'Jasmin', 'Genevieve', 'Clodagh', 'Graham', 'Sondra', 'Ed']
-    
+
     >>> rn.random_nicks(letter='u', gender='f', count=4)
     ['Una', 'Uma', 'Ursula', 'Ulrica']
 
     >>> rn.random_nicks(letter='a', gender='m', count=4)
     ['Anthony', 'Alec', 'Antonio', 'Adam']
-    
+
     >>> rn.random_nicks(gender='m', count=5)
     ['Elijah', 'Abraham', 'Noel', 'Myles', 'Pedro']
 
@@ -82,10 +86,10 @@ How to use
 ###### Random e-mails
     >>> from random_words import RandomEmails
     >>> rand_mails = RandomEmails()
-    
+
     >>> rand_mails.randomMail()
     'ernest@mail2java.com'
-    
+
     >>> rand_mails.randomMails()
     ['annmarie@mail2xox.com']
 
@@ -97,9 +101,9 @@ How to use
     >>> li = LoremIpsum()
     >>> li.get_sentence()
     'Luctus molestie mazim netus temporsuspendisse, tristique nihil vestibulumnulla clita possim.'
- 
+
     >>> li.get_sentences(5)
     'Esse erosin magnis cursus, in ullamcorper sapien et accusam. Arcu fringilla metusdonec. Magna tempus elitr lorem esse antesuspendisse, mi fusce luctus lacusnulla nullam porta. Takimata tation porttitor, amet aliquammauris enimsed dapibus. Assum lectus accusam fermentumfusce, iaculis turpis senectus id nunccurabitur.'
-    
+
     >>> li.get_sentences_list(5)
     ['Platea egestas delenit curae iaculis ullamcorper.', 'Felissed sagittis volutpat vitae, lacus nullam massapellentesque urnapraesent.', 'Dapibusnam vitae nulla, consectetuer conguenulla luptatum urnamorbi.', 'Ante nostra vero nihil eu odio.', 'Invidunt interdum condimentum ametduis, leopraesent tempus placerat aaenean ad.']

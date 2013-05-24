@@ -78,7 +78,7 @@ class TestsRandomNicknames(unittest.TestCase):
             self.assertEqual(nick[0].lower(), letter)
 
     def test_random_nick_value_error(self):
-        self.assertRaises(ValueError, self.rn.random_nick, 'a')
+        self.assertRaises(ValueError, self.rn.random_nick, 'ą')
         self.assertRaises(ValueError, self.rn.random_nick, 'Ź', 'f')
         self.assertRaises(ValueError, self.rn.random_nick, 'ż', 'm')
         self.assertRaises(ValueError, self.rn.random_nick, 'ą', None)
@@ -103,7 +103,7 @@ class TestsRandomNicknames(unittest.TestCase):
             self.assertRaises(ValueError, self.rn.random_nicks, letter, count=len_random)
 
 
-class TestsRandomNicknames(unittest.TestCase):
+class TestsRandomLoremIpsum(unittest.TestCase):
 
     def setUp(self):
         self.li = LoremIpsum()

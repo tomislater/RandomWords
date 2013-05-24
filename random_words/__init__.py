@@ -9,8 +9,8 @@
 
 __version__ = '0.1.7'
 
-from random_words import RandomWords
-from random_words import RandomNicknames
-from random_words import RandomEmails
+from .random_words import RandomWords
+from .random_words import RandomNicknames
+from .random_words import RandomEmails
 
-from lorem_ipsum import LoremIpsum
+from .lorem_ipsum import LoremIpsum

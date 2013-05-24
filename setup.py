@@ -7,7 +7,7 @@ setup(
     version='0.1.7',
     author='Tomek Święcicki',
     author_email='tomislater@gmail.com',
-    packages=['random_words', 'random_words.test'],
+    packages=['random_words', 'test'],
     package_data={'': ['*.txt', '*.dat']},
     url='https://github.com/tomislater/RandomWords',
     license='LICENSE.txt',

@@ -57,6 +57,6 @@ class LoremIpsum(object):
         """
         lw_len = len(list_words)
         if lw_len > 6:
-            list_words.insert(lw_len / 2 + random.choice(xrange(-2, 2)), ',')
+            list_words.insert(lw_len / 2 + random.choice(range(-2, 2)), ',')
         sentence = ' '.join(list_words).replace(' ,', ',')
         return sentence[0].upper() + sentence[1:] + '.'

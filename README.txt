@@ -6,7 +6,7 @@ Overview
 
 RandomWords is a useful package for generate random words, nicks, e-mails and lorem ipsum.
 
-Travis status
+Build status
 -------------
 
 .. image:: https://travis-ci.org/tomislater/RandomWords.png?branch=master

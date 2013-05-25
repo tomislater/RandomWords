@@ -1,11 +1,10 @@
 <h1 id="randomwords">RandomWords</h1>
 <h2 id="overview">Overview</h2>
-<p>RandomWords is a useful package for generate random words, nicks and senteces (soon).</p>
-<h2 id="requirements">Requirements</h2>
-<ul>
-<li>Python 2.6 or 2.7</li>
-<li>Liunx, Windows?, Mac OSX?, BSD?</li>
-</ul>
+<p>RandomWords is a useful package for generate random words, nicks, e-mails and lorem ipsum.</p>
+<h3 id="build-status">Build status</h3>
+<p><a href="https://travis-ci.org/tomislater/RandomWords"><embed src="https://travis-ci.org/tomislater/RandomWords.png?branch=master" /></a></p>
+<h3 id="pypi-status">PyPI status</h3>
+<p><a href="https://crate.io/packages/RandomWords/"><img src="https://pypip.in/v/RandomWords/badge.png" alt="PyPi version" /></a> <a href="https://crate.io/packages/RandomWords/"><img src="https://pypip.in/d/RandomWords/badge.png" alt="PyPi downloads" /></a></p>
 <h2 id="install">Install</h2>
 <p>Quick way: <code>pip install RandomWords</code></p>
 <p>or:</p>
@@ -20,69 +19,74 @@
 &gt;&gt;&gt; print word
 factors
 
-&gt;&gt;&gt; word = rw.random_word('y')
+&gt;&gt;&gt; word = rw.random_word(&#39;y&#39;)
 &gt;&gt;&gt; print word
 yards
 
 &gt;&gt;&gt; words = rw.random_words(count=10)
 &gt;&gt;&gt; print words
-['runs', 'experience', 'comments', 'freedom', 'permit', 'honks', 'pins', 'texts', 'grant', 'fathers']
+[&#39;runs&#39;, &#39;experience&#39;, &#39;comments&#39;, &#39;freedom&#39;, &#39;permit&#39;, &#39;honks&#39;, &#39;pins&#39;, &#39;texts&#39;, &#39;grant&#39;, &#39;fathers&#39;]
 
-&gt;&gt;&gt; words = rw.random_words(letter='r', count=5)
+&gt;&gt;&gt; words = rw.random_words(letter=&#39;r&#39;, count=5)
 &gt;&gt;&gt; print words
-['raincoat', 'reactance', 'room', 'relocation', 'rudders']
+[&#39;raincoat&#39;, &#39;reactance&#39;, &#39;room&#39;, &#39;relocation&#39;, &#39;rudders&#39;]
 
 &gt;&gt;&gt; words = rw.random_words(letter=None, count=2)
 &gt;&gt;&gt; print words
-['tides', 'eights']
-</code></pre>
+[&#39;tides&#39;, &#39;eights&#39;]</code></pre>
 <h6 id="random-nicks">Random nicks</h6>
 <pre><code>&gt;&gt;&gt; from random_words import RandomNicknames
 &gt;&gt;&gt; rn = RandomNicknames()
 
 &gt;&gt;&gt; rn.random_nick()
-'Fredrick'
+&#39;Fredrick&#39;
 
-&gt;&gt;&gt; rn.random_nick('y')
-'York'
+&gt;&gt;&gt; rn.random_nick(&#39;y&#39;)
+&#39;York&#39;
 
-&gt;&gt;&gt; rn.random_nick(letter='r', gender='m')
-'Roosevelt'
+&gt;&gt;&gt; rn.random_nick(letter=&#39;r&#39;, gender=&#39;m&#39;)
+&#39;Roosevelt&#39;
 
-&gt;&gt;&gt; rn.random_nick(letter='r', gender='f')
-'Rene'
+&gt;&gt;&gt; rn.random_nick(letter=&#39;r&#39;, gender=&#39;f&#39;)
+&#39;Rene&#39;
 
 &gt;&gt;&gt; rn.random_nicks()
-['Fionn']
+[&#39;Fionn&#39;]
 
 &gt;&gt;&gt; rn.random_nicks(count=10)
-['Kristy', 'Imani', 'Delbert', 'Brevyn', 'Jasmin', 'Genevieve', 'Clodagh', 'Graham', 'Sondra', 'Ed']
+[&#39;Kristy&#39;, &#39;Imani&#39;, &#39;Delbert&#39;, &#39;Brevyn&#39;, &#39;Jasmin&#39;, &#39;Genevieve&#39;, &#39;Clodagh&#39;, &#39;Graham&#39;, &#39;Sondra&#39;, &#39;Ed&#39;]
 
-&gt;&gt;&gt; rn.random_nicks(letter='u', gender='f', count=4)
-['Una', 'Uma', 'Ursula', 'Ulrica']
+&gt;&gt;&gt; rn.random_nicks(letter=&#39;u&#39;, gender=&#39;f&#39;, count=4)
+[&#39;Una&#39;, &#39;Uma&#39;, &#39;Ursula&#39;, &#39;Ulrica&#39;]
 
-&gt;&gt;&gt; rn.random_nicks(letter='a', gender='m', count=4)
-['Anthony', 'Alec', 'Antonio', 'Adam']
+&gt;&gt;&gt; rn.random_nicks(letter=&#39;a&#39;, gender=&#39;m&#39;, count=4)
+[&#39;Anthony&#39;, &#39;Alec&#39;, &#39;Antonio&#39;, &#39;Adam&#39;]
 
-&gt;&gt;&gt; rn.random_nicks(gender='m', count=5)
-['Elijah', 'Abraham', 'Noel', 'Myles', 'Pedro']
+&gt;&gt;&gt; rn.random_nicks(gender=&#39;m&#39;, count=5)
+[&#39;Elijah&#39;, &#39;Abraham&#39;, &#39;Noel&#39;, &#39;Myles&#39;, &#39;Pedro&#39;]
 
-&gt;&gt;&gt; rn.random_nicks(gender='f', count=5)
-['Sabrina', 'Debbie', 'Jerri', 'Savannah', 'Wendy']
-</code></pre>
+&gt;&gt;&gt; rn.random_nicks(gender=&#39;f&#39;, count=5)
+[&#39;Sabrina&#39;, &#39;Debbie&#39;, &#39;Jerri&#39;, &#39;Savannah&#39;, &#39;Wendy&#39;]</code></pre>
+<h6 id="random-e-mails">Random e-mails</h6>
+<pre><code>&gt;&gt;&gt; from random_words import RandomEmails
+&gt;&gt;&gt; rand_mails = RandomEmails()
+
+&gt;&gt;&gt; rand_mails.randomMail()
+&#39;ernest@mail2java.com&#39;
+
+&gt;&gt;&gt; rand_mails.randomMails()
+[&#39;annmarie@mail2xox.com&#39;]
+
+&gt;&gt;&gt; rand_mails.randomMails(15)
+[&#39;patrice@keko.com.ar&#39;, &#39;conor@mail2atom.com&#39;, &#39;vihan@mail2carolyn.com&#39;, &#39;felicia@looksmart.com.au&#39;, &#39;quinlan@accessgcc.com&#39;, &#39;aimee@china.net.vg&#39;, &#39;kate@mail2christmas.com&#39;, &#39;geoffrey@frommiami.com&#39;, &#39;lillie@comic.com&#39;, &#39;trinity@nagpal.net&#39;, &#39;bennett@webmail.co.za&#39;, &#39;jesse@chaiyomail.com&#39;, &#39;chase@iespana.es&#39;, &#39;mya@ijustdontcare.com&#39;, &#39;ramona@uole.com&#39;]</code></pre>
 <h6 id="lorem-ipsum">Lorem ipsum</h6>
 <pre><code>&gt;&gt;&gt; from random_words import LoremIpsum
 &gt;&gt;&gt; li = LoremIpsum()
 &gt;&gt;&gt; li.get_sentence()
-'Luctus molestie mazim netus temporsuspendisse, tristique nihil vestibulumnulla clita possim.'
+&#39;Luctus molestie mazim netus temporsuspendisse, tristique nihil vestibulumnulla clita possim.&#39;
 
 &gt;&gt;&gt; li.get_sentences(5)
-'Esse erosin magnis cursus, in ullamcorper sapien et accusam. Arcu fringilla metusdonec. Magna tempus elitr lorem esse antesuspendisse, mi fusce luctus lacusnulla nullam porta. Takimata tation porttitor, amet aliquammauris enimsed dapibus. Assum lectus accusam fermentumfusce, iaculis turpis senectus id nunccurabitur.'
+&#39;Esse erosin magnis cursus, in ullamcorper sapien et accusam. Arcu fringilla metusdonec. Magna tempus elitr lorem esse antesuspendisse, mi fusce luctus lacusnulla nullam porta. Takimata tation porttitor, amet aliquammauris enimsed dapibus. Assum lectus accusam fermentumfusce, iaculis turpis senectus id nunccurabitur.&#39;
 
 &gt;&gt;&gt; li.get_sentences_list(5)
-['Platea egestas delenit curae iaculis ullamcorper.', 'Felissed sagittis volutpat vitae, lacus nullam massapellentesque urnapraesent.', 'Dapibusnam vitae nulla, consectetuer conguenulla luptatum urnamorbi.', 'Ante nostra vero nihil eu odio.', 'Invidunt interdum condimentum ametduis, leopraesent tempus placerat aaenean ad.']
-</code></pre>
-<h2 id="todo">TODO</h2>
-<ul>
-<li>random sentence/sentences</li>
-</ul>
+[&#39;Platea egestas delenit curae iaculis ullamcorper.&#39;, &#39;Felissed sagittis volutpat vitae, lacus nullam massapellentesque urnapraesent.&#39;, &#39;Dapibusnam vitae nulla, consectetuer conguenulla luptatum urnamorbi.&#39;, &#39;Ante nostra vero nihil eu odio.&#39;, &#39;Invidunt interdum condimentum ametduis, leopraesent tempus placerat aaenean ad.&#39;]</code></pre>

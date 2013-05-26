@@ -1,17 +1,15 @@
 RandomWords
 ===========
 
+[![Build Status](https://travis-ci.org/tomislater/RandomWords.png?branch=master)](https://travis-ci.org/tomislater/RandomWords)
+[![Coverage Status](https://coveralls.io/repos/tomislater/RandomWords/badge.png?branch=master)](https://coveralls.io/r/tomislater/RandomWords?branch=master)
+[![PyPi version](https://pypip.in/v/RandomWords/badge.png)](https://crate.io/packages/RandomWords/)
+[![PyPi downloads](https://pypip.in/d/RandomWords/badge.png)](https://crate.io/packages/RandomWords/)
+
 Overview
 --------
 
 RandomWords is a useful package for generate random words, nicks, e-mails and lorem ipsum.
-
-### Build status
-[![Build Status](https://travis-ci.org/tomislater/RandomWords.png?branch=master)](https://travis-ci.org/tomislater/RandomWords)
-
-### PyPI status
-[![PyPi version](https://pypip.in/v/RandomWords/badge.png)](https://crate.io/packages/RandomWords/)
-[![PyPi downloads](https://pypip.in/d/RandomWords/badge.png)](https://crate.io/packages/RandomWords/)
 
 Install
 -------

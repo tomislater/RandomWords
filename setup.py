@@ -21,4 +21,5 @@ setup(
         'Development Status :: 5 - Production/Stable',
     ],
     install_requires=['ujson'],
+    test_suite="test",
 )

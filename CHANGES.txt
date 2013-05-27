@@ -1,5 +1,6 @@
+v0.1.9, 2013-05-27 -- Added some tests.
 v0.1.8, 2013-05-25 -- Fixed for python3.
-v0.1.7, 2012-11-11 -- Improved speed.
+v0.1.7, 2013-01-09 -- Improved speed.
 v0.1.6, 2012-11-11 -- Added random e-mails.
 v0.1.5, 2012-11-04 -- Changes for lorem ipsum.
 v0.1.4, 2012-11-04 -- Added lorem ipsum.

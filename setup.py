@@ -12,7 +12,7 @@ setup(
     url='https://github.com/tomislater/RandomWords',
     license='LICENSE.txt',
     description='A useful module for a random text, e-mails and lorem ipsum.',
-    long_description=open('README.txt').read(),
+    long_description=open('README.rst').read(),
     classifiers=[
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',

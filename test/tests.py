@@ -40,6 +40,7 @@ class TestsRandomWords(unittest.TestCase):
         self.assertRaises(ValueError, self.rw.random_words, ['fha'])
         self.assertRaises(ValueError, self.rw.random_words, 0)
         self.assertRaises(ValueError, self.rw.random_words, -1)
+        self.assertRaises(ValueError, self.rw.random_words, letter=None, count=1000000)
         self.assertRaises(ValueError, self.rw.random_words, count=0)
         self.assertRaises(ValueError, self.rw.random_words, count=None)
         self.assertRaises(ValueError, self.rw.random_words, count=[8])
@@ -101,6 +102,19 @@ class TestsRandomNicknames(unittest.TestCase):
         len_random = 1000000
         for letter in self.letters:
             self.assertRaises(ValueError, self.rn.random_nicks, letter, count=len_random)
+
+    def test_random_nicks_not_gender(self):
+        self.assertRaises(ValueError, self.rn.random_nicks, gender=[])
+        self.assertRaises(ValueError, self.rn.random_nicks, gender=())
+        self.assertRaises(ValueError, self.rn.random_nicks, gender=set())
+        self.assertRaises(ValueError, self.rn.random_nicks, gender=frozenset())
+        self.assertRaises(ValueError, self.rn.random_nicks, gender="")
+        self.assertRaises(ValueError, self.rn.random_nicks, gender="dż")
+        self.assertRaises(ValueError, self.rn.random_nicks, gender="wtf")
+
+    def test_random_nicks_gender_value_error(self):
+        self.assertRaises(ValueError, self.rn.random_nicks, letter=None, gender="f", count=1000000)
+        self.assertRaises(ValueError, self.rn.random_nicks, letter=None, gender="m", count=1000000)
 
 
 class TestsRandomLoremIpsum(unittest.TestCase):

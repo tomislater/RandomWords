@@ -1,2 +1,2 @@
-include *.md *.txt *.dat
+include *.rst *.txt *.dat
 recursive-include random_words *.txt *.dat

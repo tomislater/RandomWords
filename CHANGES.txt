@@ -1,3 +1,4 @@
+v0.1.10, 2013-06-23-- Fixed for pip install.
 v0.1.9, 2013-05-27 -- Added some tests.
 v0.1.8, 2013-05-25 -- Fixed for python3.
 v0.1.7, 2013-01-09 -- Improved speed.

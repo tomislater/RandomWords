@@ -4,7 +4,7 @@ from setuptools import setup
 
 setup(
     name='RandomWords',
-    version='0.1.9',
+    version='0.1.10',
     author='Tomek Święcicki',
     author_email='tomislater@gmail.com',
     packages=['random_words', 'test'],

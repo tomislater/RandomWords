@@ -1,0 +1,11 @@
+test Package
+============
+
+:mod:`test_random_words` Module
+-------------------------------
+
+.. automodule:: random_words.test.test_random_words
+    :members:
+    :undoc-members:
+    :show-inheritance:
+

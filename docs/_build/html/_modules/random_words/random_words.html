@@ -1,0 +1,321 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>random_words.random_words &mdash; random_words  documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="random_words  documentation" href="../../index.html" />
+    <link rel="up" title="Module code" href="../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../index.html">random_words  documentation</a> &raquo;</li>
+          <li><a href="../index.html" accesskey="U">Module code</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <h1>Source code for random_words.random_words</h1><div class="highlight"><pre>
+<span class="c"># -*- coding: utf-8 -*-</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">ujson</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">itertools</span>
+
+<span class="n">main_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">__file__</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+
+
+<div class="viewcode-block" id="Random"><a class="viewcode-back" href="../../random_words.html#random_words.random_words.Random">[docs]</a><span class="k">class</span> <span class="nc">Random</span><span class="p">(</span><span class="nb">dict</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">file</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">types_file</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s">&#39;nouns&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_nouns</span><span class="p">,</span>
+            <span class="s">&#39;nicknames&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_nicknames</span><span class="p">,</span>
+            <span class="s">&#39;dmails&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_dmails</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">load_file</span><span class="p">(</span><span class="nb">file</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Random.load_file"><a class="viewcode-back" href="../../random_words.html#random_words.random_words.Random.load_file">[docs]</a>    <span class="k">def</span> <span class="nf">load_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">file</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param str file: filename</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">types_file</span><span class="p">[</span><span class="nb">file</span><span class="p">](</span><span class="nb">file</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="Random.load_nouns"><a class="viewcode-back" href="../../random_words.html#random_words.random_words.Random.load_nouns">[docs]</a>    <span class="k">def</span> <span class="nf">load_nouns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">file</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Load dict from file for random words.</span>
+
+<span class="sd">        :param str file: filename</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">main_dir</span><span class="p">,</span> <span class="nb">file</span> <span class="o">+</span> <span class="s">&#39;.dat&#39;</span><span class="p">),</span> <span class="s">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nouns</span> <span class="o">=</span> <span class="n">ujson</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="Random.load_dmails"><a class="viewcode-back" href="../../random_words.html#random_words.random_words.Random.load_dmails">[docs]</a>    <span class="k">def</span> <span class="nf">load_dmails</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">file</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Load list from file for random mails</span>
+
+<span class="sd">        :param str file: filename</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">main_dir</span><span class="p">,</span> <span class="nb">file</span> <span class="o">+</span> <span class="s">&#39;.dat&#39;</span><span class="p">),</span> <span class="s">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">[</span><span class="s">&#39;domains&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">(</span><span class="n">ujson</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
+</div>
+<div class="viewcode-block" id="Random.load_nicknames"><a class="viewcode-back" href="../../random_words.html#random_words.random_words.Random.load_nicknames">[docs]</a>    <span class="k">def</span> <span class="nf">load_nicknames</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">file</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Load dict from file for random nicknames.</span>
+
+<span class="sd">        :param str file: filename</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">main_dir</span><span class="p">,</span> <span class="nb">file</span> <span class="o">+</span> <span class="s">&#39;.dat&#39;</span><span class="p">),</span> <span class="s">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nicknames</span> <span class="o">=</span> <span class="n">ujson</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="Random.check_count"><a class="viewcode-back" href="../../random_words.html#random_words.random_words.Random.check_count">[docs]</a>    <span class="k">def</span> <span class="nf">check_count</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">count</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Checks count</span>
+
+<span class="sd">        :param int count: count number ;)</span>
+<span class="sd">        :raises: ValueError</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">count</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="nb">int</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&#39;Param &quot;count&quot; must be int.&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">count</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&#39;Param &quot;count&quot; must be greater than 0.&#39;</span><span class="p">)</span>
+
+</div></div>
+<div class="viewcode-block" id="RandomWords"><a class="viewcode-back" href="../../random_words.html#random_words.random_words.RandomWords">[docs]</a><span class="k">class</span> <span class="nc">RandomWords</span><span class="p">(</span><span class="n">Random</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">RandomWords</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s">&#39;nouns&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">available_letters</span> <span class="o">=</span> <span class="s">&#39;qwertyuiopasdfghjklzcvbnm&#39;</span>
+
+<div class="viewcode-block" id="RandomWords.random_word"><a class="viewcode-back" href="../../random_words.html#random_words.random_words.RandomWords.random_word">[docs]</a>    <span class="k">def</span> <span class="nf">random_word</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">letter</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return random word.</span>
+
+<span class="sd">        :param str letter: letter</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        :returns: random word</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">random_words</span><span class="p">(</span><span class="n">letter</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</div>
+<div class="viewcode-block" id="RandomWords.random_words"><a class="viewcode-back" href="../../random_words.html#random_words.random_words.RandomWords.random_words">[docs]</a>    <span class="k">def</span> <span class="nf">random_words</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">letter</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns list of random words.</span>
+
+<span class="sd">        :param str letter: letter</span>
+<span class="sd">        :param int count: how much words</span>
+<span class="sd">        :rtype: list</span>
+<span class="sd">        :returns: list of random words</span>
+<span class="sd">        :raises: ValueError</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">check_count</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">letter</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">all_words</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span>
+                <span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nouns</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">words</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">all_words</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="n">len_sample</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">all_words</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&#39;Param &quot;count&quot; must be less than {0}. </span><span class="se">\</span>
+<span class="s">(It is only {0} words)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">len_sample</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">letter</span><span class="p">))</span>
+
+        <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">letter</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="nb">str</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&#39;Param &quot;letter&quot; must be string.&#39;</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">letter</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">available_letters</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s">&#39;Param &quot;letter&quot; must be in {0}.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">available_letters</span><span class="p">))</span>
+
+        <span class="k">elif</span> <span class="n">letter</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">available_letters</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">words</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nouns</span><span class="p">[</span><span class="n">letter</span><span class="p">],</span> <span class="n">count</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="n">len_sample</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nouns</span><span class="p">[</span><span class="n">letter</span><span class="p">])</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&#39;Param &quot;count&quot; must be less than {0}. </span><span class="se">\</span>
+<span class="s">(It is only {0} words for letter &quot;{1}&quot;)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">len_sample</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">letter</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">words</span>
+
+</div></div>
+<div class="viewcode-block" id="RandomNicknames"><a class="viewcode-back" href="../../random_words.html#random_words.random_words.RandomNicknames">[docs]</a><span class="k">class</span> <span class="nc">RandomNicknames</span><span class="p">(</span><span class="n">Random</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">RandomNicknames</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s">&#39;nicknames&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">available_letters</span> <span class="o">=</span> <span class="s">&#39;qwertyuiopasdfghjklzxcvbnm&#39;</span>
+
+<div class="viewcode-block" id="RandomNicknames.random_nick"><a class="viewcode-back" href="../../random_words.html#random_words.random_words.RandomNicknames.random_nick">[docs]</a>    <span class="k">def</span> <span class="nf">random_nick</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">letter</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">gender</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return random nick.</span>
+
+<span class="sd">        :param str letter: letter</span>
+
+<span class="sd">        :param str gender: ``&#39;f&#39;`` for female, ``&#39;m&#39;`` for male and None for\</span>
+<span class="sd">            both</span>
+
+<span class="sd">        :rtype: str</span>
+<span class="sd">        :returns: random nick</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">random_nicks</span><span class="p">(</span><span class="n">letter</span><span class="p">,</span> <span class="n">gender</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</div>
+<div class="viewcode-block" id="RandomNicknames.random_nicks"><a class="viewcode-back" href="../../random_words.html#random_words.random_words.RandomNicknames.random_nicks">[docs]</a>    <span class="k">def</span> <span class="nf">random_nicks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">letter</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">gender</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return list of random nicks.</span>
+
+<span class="sd">        :param str letter: letter</span>
+<span class="sd">        :param str gender: ``&#39;f&#39;`` for female, ``&#39;m&#39;`` for male and None for both</span>
+<span class="sd">        :param int count: how much nicks</span>
+<span class="sd">        :rtype: list</span>
+<span class="sd">        :returns: list of random nicks</span>
+<span class="sd">        :raises: ValueError</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">check_count</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">gender</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;f&#39;</span><span class="p">,</span> <span class="s">&#39;m&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&#39;Param &quot;gender&quot; must be in (f, m, None)&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">letter</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">gender</span><span class="p">:</span>
+                <span class="n">g</span> <span class="o">=</span> <span class="s">&#39;u&#39;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">g</span> <span class="o">=</span> <span class="n">gender</span>
+
+            <span class="n">all_nicks</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span>
+                <span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nicknames</span><span class="p">[</span><span class="n">g</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">nicks</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">all_nicks</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="n">len_sample</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">all_nicks</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&#39;Param &quot;count&quot; must be less than {0}. </span><span class="se">\</span>
+<span class="s">(It is only {0} words.&quot;)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">len_sample</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+
+        <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">letter</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="nb">str</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&#39;Param &quot;letter&quot; must be string.&#39;</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">letter</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">available_letters</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s">&#39;Param &quot;letter&quot; must be in &quot;{0}&quot;.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">available_letters</span><span class="p">))</span>
+
+        <span class="k">elif</span> <span class="n">letter</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">available_letters</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">gender</span><span class="p">:</span>
+                <span class="n">g</span> <span class="o">=</span> <span class="n">gender</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">g</span> <span class="o">=</span> <span class="s">&#39;u&#39;</span>
+
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">nicks</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nicknames</span><span class="p">[</span><span class="n">g</span><span class="p">][</span><span class="n">letter</span><span class="p">],</span> <span class="n">count</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="n">len_sample</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nicknames</span><span class="p">[</span><span class="n">g</span><span class="p">][</span><span class="n">letter</span><span class="p">])</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&#39;Param &quot;count&quot; must be less than {0}. </span><span class="se">\</span>
+<span class="s">(It is only {0} nicks for letter &quot;{1}&quot;)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">len_sample</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">letter</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">nicks</span>
+
+</div></div>
+<div class="viewcode-block" id="RandomEmails"><a class="viewcode-back" href="../../random_words.html#random_words.random_words.RandomEmails">[docs]</a><span class="k">class</span> <span class="nc">RandomEmails</span><span class="p">(</span><span class="n">Random</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">RandomEmails</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s">&#39;dmails&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rn</span> <span class="o">=</span> <span class="n">RandomNicknames</span><span class="p">()</span>
+
+<div class="viewcode-block" id="RandomEmails.randomMail"><a class="viewcode-back" href="../../random_words.html#random_words.random_words.RandomEmails.randomMail">[docs]</a>    <span class="k">def</span> <span class="nf">randomMail</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return random e-mail.</span>
+
+<span class="sd">        :rtype: str</span>
+<span class="sd">        :returns: random e-mail</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">randomMails</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+</div>
+<div class="viewcode-block" id="RandomEmails.randomMails"><a class="viewcode-back" href="../../random_words.html#random_words.random_words.RandomEmails.randomMails">[docs]</a>    <span class="k">def</span> <span class="nf">randomMails</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return random e-mails.</span>
+
+<span class="sd">        :rtype: list</span>
+<span class="sd">        :returns: list of random e-mails</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">check_count</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+        <span class="n">random_nicks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rn</span><span class="o">.</span><span class="n">random_nicks</span><span class="p">(</span><span class="n">count</span><span class="o">=</span><span class="n">count</span><span class="p">)</span>
+        <span class="n">random_domains</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s">&#39;domains&#39;</span><span class="p">],</span> <span class="n">count</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="n">nick</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot;@&quot;</span> <span class="o">+</span> <span class="n">domain</span> <span class="k">for</span> <span class="n">nick</span><span class="p">,</span> <span class="n">domain</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">random_nicks</span><span class="p">,</span>
+                                                                <span class="n">random_domains</span><span class="p">)</span>
+        <span class="p">]</span></div></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../index.html">random_words  documentation</a> &raquo;</li>
+          <li><a href="../index.html" >Module code</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Tomasz Święcicki.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>

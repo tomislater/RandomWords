@@ -1,0 +1,435 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>random_words Package &mdash; random_words  documentation</title>
+    
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="random_words  documentation" href="index.html" />
+    <link rel="prev" title="How to use" href="how_to_use.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="how_to_use.html" title="How to use"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">random_words  documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="random-words-package">
+<h1>random_words Package<a class="headerlink" href="#random-words-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2><a class="reference internal" href="#module-random_words" title="random_words: A useful module for random text."><tt class="xref py py-mod docutils literal"><span class="pre">random_words</span></tt></a> Package<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-random_words.__init__"></span><span class="target" id="module-random_words"></span></div>
+<div class="section" id="module-random_words.lorem_ipsum">
+<span id="lorem-ipsum-module"></span><h2><tt class="xref py py-mod docutils literal"><span class="pre">lorem_ipsum</span></tt> Module<a class="headerlink" href="#module-random_words.lorem_ipsum" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="random_words.lorem_ipsum.LoremIpsum">
+<em class="property">class </em><tt class="descclassname">random_words.lorem_ipsum.</tt><tt class="descname">LoremIpsum</tt><a class="reference internal" href="_modules/random_words/lorem_ipsum.html#LoremIpsum"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#random_words.lorem_ipsum.LoremIpsum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<dl class="attribute">
+<dt id="random_words.lorem_ipsum.LoremIpsum.MAX_WORDS">
+<tt class="descname">MAX_WORDS</tt><em class="property"> = 15</em><a class="headerlink" href="#random_words.lorem_ipsum.LoremIpsum.MAX_WORDS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="random_words.lorem_ipsum.LoremIpsum.MIN_WORDS">
+<tt class="descname">MIN_WORDS</tt><em class="property"> = 2</em><a class="headerlink" href="#random_words.lorem_ipsum.LoremIpsum.MIN_WORDS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="random_words.lorem_ipsum.LoremIpsum.get_sentence">
+<tt class="descname">get_sentence</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/random_words/lorem_ipsum.html#LoremIpsum.get_sentence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#random_words.lorem_ipsum.LoremIpsum.get_sentence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a sentence.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">string with sentence</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="random_words.lorem_ipsum.LoremIpsum.get_sentences">
+<tt class="descname">get_sentences</tt><big>(</big><em>sentences=1</em><big>)</big><a class="reference internal" href="_modules/random_words/lorem_ipsum.html#LoremIpsum.get_sentences"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#random_words.lorem_ipsum.LoremIpsum.get_sentences" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return sentences in string.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>sentences</strong> (<em>int</em>) &#8211; how many sentences.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string with sentences</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="random_words.lorem_ipsum.LoremIpsum.get_sentences_list">
+<tt class="descname">get_sentences_list</tt><big>(</big><em>sentences=1</em><big>)</big><a class="reference internal" href="_modules/random_words/lorem_ipsum.html#LoremIpsum.get_sentences_list"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#random_words.lorem_ipsum.LoremIpsum.get_sentences_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return sentences in list.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>sentences</strong> (<em>int</em>) &#8211; how many sentences</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">list of strings with sentence</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="random_words.lorem_ipsum.LoremIpsum.make_sentence">
+<tt class="descname">make_sentence</tt><big>(</big><em>list_words</em><big>)</big><a class="reference internal" href="_modules/random_words/lorem_ipsum.html#LoremIpsum.make_sentence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#random_words.lorem_ipsum.LoremIpsum.make_sentence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a sentence from list of words.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>list_words</strong> (<em>list</em>) &#8211; list of words</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">sentence</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-random_words.random_words">
+<span id="random-words-module"></span><h2><a class="reference internal" href="#module-random_words" title="random_words: A useful module for random text."><tt class="xref py py-mod docutils literal"><span class="pre">random_words</span></tt></a> Module<a class="headerlink" href="#module-random_words.random_words" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="random_words.random_words.Random">
+<em class="property">class </em><tt class="descclassname">random_words.random_words.</tt><tt class="descname">Random</tt><big>(</big><em>file</em><big>)</big><a class="reference internal" href="_modules/random_words/random_words.html#Random"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#random_words.random_words.Random" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></p>
+<dl class="method">
+<dt id="random_words.random_words.Random.check_count">
+<tt class="descname">check_count</tt><big>(</big><em>count</em><big>)</big><a class="reference internal" href="_modules/random_words/random_words.html#Random.check_count"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#random_words.random_words.Random.check_count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks count</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>count</strong> (<em>int</em>) &#8211; count number ;)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body">ValueError</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="random_words.random_words.Random.load_dmails">
+<tt class="descname">load_dmails</tt><big>(</big><em>file</em><big>)</big><a class="reference internal" href="_modules/random_words/random_words.html#Random.load_dmails"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#random_words.random_words.Random.load_dmails" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load list from file for random mails</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>file</strong> (<em>str</em>) &#8211; filename</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="random_words.random_words.Random.load_file">
+<tt class="descname">load_file</tt><big>(</big><em>file</em><big>)</big><a class="reference internal" href="_modules/random_words/random_words.html#Random.load_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#random_words.random_words.Random.load_file" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>file</strong> (<em>str</em>) &#8211; filename</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="random_words.random_words.Random.load_nicknames">
+<tt class="descname">load_nicknames</tt><big>(</big><em>file</em><big>)</big><a class="reference internal" href="_modules/random_words/random_words.html#Random.load_nicknames"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#random_words.random_words.Random.load_nicknames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load dict from file for random nicknames.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>file</strong> (<em>str</em>) &#8211; filename</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="random_words.random_words.Random.load_nouns">
+<tt class="descname">load_nouns</tt><big>(</big><em>file</em><big>)</big><a class="reference internal" href="_modules/random_words/random_words.html#Random.load_nouns"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#random_words.random_words.Random.load_nouns" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load dict from file for random words.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>file</strong> (<em>str</em>) &#8211; filename</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="random_words.random_words.RandomEmails">
+<em class="property">class </em><tt class="descclassname">random_words.random_words.</tt><tt class="descname">RandomEmails</tt><a class="reference internal" href="_modules/random_words/random_words.html#RandomEmails"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#random_words.random_words.RandomEmails" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#random_words.random_words.Random" title="random_words.random_words.Random"><tt class="xref py py-class docutils literal"><span class="pre">random_words.random_words.Random</span></tt></a></p>
+<dl class="method">
+<dt id="random_words.random_words.RandomEmails.randomMail">
+<tt class="descname">randomMail</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/random_words/random_words.html#RandomEmails.randomMail"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#random_words.random_words.RandomEmails.randomMail" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return random e-mail.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">random e-mail</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="random_words.random_words.RandomEmails.randomMails">
+<tt class="descname">randomMails</tt><big>(</big><em>count=1</em><big>)</big><a class="reference internal" href="_modules/random_words/random_words.html#RandomEmails.randomMails"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#random_words.random_words.RandomEmails.randomMails" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return random e-mails.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">list of random e-mails</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="random_words.random_words.RandomNicknames">
+<em class="property">class </em><tt class="descclassname">random_words.random_words.</tt><tt class="descname">RandomNicknames</tt><a class="reference internal" href="_modules/random_words/random_words.html#RandomNicknames"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#random_words.random_words.RandomNicknames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#random_words.random_words.Random" title="random_words.random_words.Random"><tt class="xref py py-class docutils literal"><span class="pre">random_words.random_words.Random</span></tt></a></p>
+<dl class="method">
+<dt id="random_words.random_words.RandomNicknames.random_nick">
+<tt class="descname">random_nick</tt><big>(</big><em>letter=None</em>, <em>gender=None</em><big>)</big><a class="reference internal" href="_modules/random_words/random_words.html#RandomNicknames.random_nick"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#random_words.random_words.RandomNicknames.random_nick" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return random nick.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>letter</strong> (<em>str</em>) &#8211; letter</li>
+<li><strong>gender</strong> (<em>str</em>) &#8211; <tt class="docutils literal"><span class="pre">'f'</span></tt> for female, <tt class="docutils literal"><span class="pre">'m'</span></tt> for male and None for            both</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">str</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">random nick</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="random_words.random_words.RandomNicknames.random_nicks">
+<tt class="descname">random_nicks</tt><big>(</big><em>letter=None</em>, <em>gender=None</em>, <em>count=1</em><big>)</big><a class="reference internal" href="_modules/random_words/random_words.html#RandomNicknames.random_nicks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#random_words.random_words.RandomNicknames.random_nicks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return list of random nicks.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>letter</strong> (<em>str</em>) &#8211; letter</li>
+<li><strong>gender</strong> (<em>str</em>) &#8211; <tt class="docutils literal"><span class="pre">'f'</span></tt> for female, <tt class="docutils literal"><span class="pre">'m'</span></tt> for male and None for both</li>
+<li><strong>count</strong> (<em>int</em>) &#8211; how much nicks</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">list</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">list of random nicks</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><p class="first last">ValueError</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="random_words.random_words.RandomWords">
+<em class="property">class </em><tt class="descclassname">random_words.random_words.</tt><tt class="descname">RandomWords</tt><a class="reference internal" href="_modules/random_words/random_words.html#RandomWords"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#random_words.random_words.RandomWords" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#random_words.random_words.Random" title="random_words.random_words.Random"><tt class="xref py py-class docutils literal"><span class="pre">random_words.random_words.Random</span></tt></a></p>
+<dl class="method">
+<dt id="random_words.random_words.RandomWords.random_word">
+<tt class="descname">random_word</tt><big>(</big><em>letter=None</em><big>)</big><a class="reference internal" href="_modules/random_words/random_words.html#RandomWords.random_word"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#random_words.random_words.RandomWords.random_word" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return random word.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>letter</strong> (<em>str</em>) &#8211; letter</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">random word</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="random_words.random_words.RandomWords.random_words">
+<tt class="descname">random_words</tt><big>(</big><em>letter=None</em>, <em>count=1</em><big>)</big><a class="reference internal" href="_modules/random_words/random_words.html#RandomWords.random_words"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#random_words.random_words.RandomWords.random_words" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns list of random words.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>letter</strong> (<em>str</em>) &#8211; letter</li>
+<li><strong>count</strong> (<em>int</em>) &#8211; how much words</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">list</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">list of random words</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><p class="first last">ValueError</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">random_words Package</a><ul>
+<li><a class="reference internal" href="#id1"><tt class="docutils literal"><span class="pre">random_words</span></tt> Package</a></li>
+<li><a class="reference internal" href="#module-random_words.lorem_ipsum"><tt class="docutils literal"><span class="pre">lorem_ipsum</span></tt> Module</a></li>
+<li><a class="reference internal" href="#module-random_words.random_words"><tt class="docutils literal"><span class="pre">random_words</span></tt> Module</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="how_to_use.html"
+                        title="previous chapter">How to use</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/random_words.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="how_to_use.html" title="How to use"
+             >previous</a> |</li>
+        <li><a href="index.html">random_words  documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Tomasz Święcicki.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>

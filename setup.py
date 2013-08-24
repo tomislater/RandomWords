@@ -2,9 +2,11 @@
 
 from setuptools import setup
 
+from random_words import __version__
+
 setup(
     name='RandomWords',
-    version='0.1.10',
+    version=__version__,
     author='Tomek Święcicki',
     author_email='tomislater@gmail.com',
     packages=['random_words', 'test'],
@@ -21,5 +23,5 @@ setup(
         'Development Status :: 5 - Production/Stable',
     ],
     install_requires=['ujson'],
-    test_suite="test",
+    test_suite="pytest",
 )

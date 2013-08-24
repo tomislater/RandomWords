@@ -5,8 +5,6 @@ import sys
 from setuptools import setup
 from setuptools.command.test import test as TestCommand
 
-from random_words import __version__
-
 
 class PyTest(TestCommand):
     def finalize_options(self):
@@ -22,7 +20,7 @@ class PyTest(TestCommand):
 
 setup(
     name='RandomWords',
-    version=__version__,
+    version='0.1.10',
     author='Tomek Święcicki',
     author_email='tomislater@gmail.com',
     packages=['random_words'],

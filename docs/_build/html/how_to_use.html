@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>How to use &mdash; random_words  documentation</title>
+    
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="random_words  documentation" href="index.html" />
+    <link rel="next" title="random_words Package" href="random_words.html" />
+    <link rel="prev" title="Welcome to random_words’s documentation!" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="random_words.html" title="random_words Package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to random_words’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">random_words  documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="how-to-use">
+<h1>How to use<a class="headerlink" href="#how-to-use" title="Permalink to this headline">¶</a></h1>
+<p><strong>Random words</strong>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">random_words</span> <span class="kn">import</span> <span class="n">RandomWords</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rw</span> <span class="o">=</span> <span class="n">RandomWords</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">word</span> <span class="o">=</span> <span class="n">rw</span><span class="o">.</span><span class="n">random_word</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">word</span>
+<span class="go">factors</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">word</span> <span class="o">=</span> <span class="n">rw</span><span class="o">.</span><span class="n">random_word</span><span class="p">(</span><span class="s">&#39;y&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">word</span>
+<span class="go">yards</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">words</span> <span class="o">=</span> <span class="n">rw</span><span class="o">.</span><span class="n">random_words</span><span class="p">(</span><span class="n">count</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">words</span>
+<span class="go">[&#39;runs&#39;, &#39;experience&#39;, &#39;comments&#39;, &#39;freedom&#39;, &#39;permit&#39;, &#39;honks&#39;, &#39;pins&#39;, &#39;texts&#39;, &#39;grant&#39;, &#39;fathers&#39;]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">words</span> <span class="o">=</span> <span class="n">rw</span><span class="o">.</span><span class="n">random_words</span><span class="p">(</span><span class="n">letter</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">words</span>
+<span class="go">[&#39;raincoat&#39;, &#39;reactance&#39;, &#39;room&#39;, &#39;relocation&#39;, &#39;rudders&#39;]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">words</span> <span class="o">=</span> <span class="n">rw</span><span class="o">.</span><span class="n">random_words</span><span class="p">(</span><span class="n">letter</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">words</span>
+<span class="go">[&#39;tides&#39;, &#39;eights&#39;]</span>
+</pre></div>
+</div>
+<p><strong>Random nicks</strong>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">random_words</span> <span class="kn">import</span> <span class="n">RandomNicknames</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rn</span> <span class="o">=</span> <span class="n">RandomNicknames</span><span class="p">()</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rn</span><span class="o">.</span><span class="n">random_nick</span><span class="p">()</span>
+<span class="go">&#39;Fredrick&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rn</span><span class="o">.</span><span class="n">random_nick</span><span class="p">(</span><span class="s">&#39;y&#39;</span><span class="p">)</span>
+<span class="go">&#39;York&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rn</span><span class="o">.</span><span class="n">random_nick</span><span class="p">(</span><span class="n">letter</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="n">gender</span><span class="o">=</span><span class="s">&#39;m&#39;</span><span class="p">)</span>
+<span class="go">&#39;Roosevelt&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rn</span><span class="o">.</span><span class="n">random_nick</span><span class="p">(</span><span class="n">letter</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="n">gender</span><span class="o">=</span><span class="s">&#39;f&#39;</span><span class="p">)</span>
+<span class="go">&#39;Rene&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rn</span><span class="o">.</span><span class="n">random_nicks</span><span class="p">()</span>
+<span class="go">[&#39;Fionn&#39;]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rn</span><span class="o">.</span><span class="n">random_nicks</span><span class="p">(</span><span class="n">count</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="go">[&#39;Kristy&#39;, &#39;Imani&#39;, &#39;Delbert&#39;, &#39;Brevyn&#39;, &#39;Jasmin&#39;, &#39;Genevieve&#39;, &#39;Clodagh&#39;, &#39;Graham&#39;, &#39;Sondra&#39;, &#39;Ed&#39;]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rn</span><span class="o">.</span><span class="n">random_nicks</span><span class="p">(</span><span class="n">letter</span><span class="o">=</span><span class="s">&#39;u&#39;</span><span class="p">,</span> <span class="n">gender</span><span class="o">=</span><span class="s">&#39;f&#39;</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="go">[&#39;Una&#39;, &#39;Uma&#39;, &#39;Ursula&#39;, &#39;Ulrica&#39;]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rn</span><span class="o">.</span><span class="n">random_nicks</span><span class="p">(</span><span class="n">letter</span><span class="o">=</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="n">gender</span><span class="o">=</span><span class="s">&#39;m&#39;</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="go">[&#39;Anthony&#39;, &#39;Alec&#39;, &#39;Antonio&#39;, &#39;Adam&#39;]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rn</span><span class="o">.</span><span class="n">random_nicks</span><span class="p">(</span><span class="n">gender</span><span class="o">=</span><span class="s">&#39;m&#39;</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="go">[&#39;Elijah&#39;, &#39;Abraham&#39;, &#39;Noel&#39;, &#39;Myles&#39;, &#39;Pedro&#39;]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rn</span><span class="o">.</span><span class="n">random_nicks</span><span class="p">(</span><span class="n">gender</span><span class="o">=</span><span class="s">&#39;f&#39;</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="go">[&#39;Sabrina&#39;, &#39;Debbie&#39;, &#39;Jerri&#39;, &#39;Savannah&#39;, &#39;Wendy&#39;]</span>
+</pre></div>
+</div>
+<p><strong>Random e-mails</strong>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">random_words</span> <span class="kn">import</span> <span class="n">RandomEmails</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rand_mails</span> <span class="o">=</span> <span class="n">RandomEmails</span><span class="p">()</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rand_mails</span><span class="o">.</span><span class="n">randomMail</span><span class="p">()</span>
+<span class="go">&#39;ernest@mail2java.com&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rand_mails</span><span class="o">.</span><span class="n">randomMails</span><span class="p">()</span>
+<span class="go">[&#39;annmarie@mail2xox.com&#39;]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rand_mails</span><span class="o">.</span><span class="n">randomMails</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+<span class="go">[&#39;patrice@keko.com.ar&#39;, &#39;conor@mail2atom.com&#39;, &#39;vihan@mail2carolyn.com&#39;, &#39;felicia@looksmart.com.au&#39;, &#39;quinlan@accessgcc.com&#39;, &#39;aimee@china.net.vg&#39;, &#39;kate@mail2christmas.com&#39;, &#39;geoffrey@frommiami.com&#39;, &#39;lillie@comic.com&#39;, &#39;trinity@nagpal.net&#39;, &#39;bennett@webmail.co.za&#39;, &#39;jesse@chaiyomail.com&#39;, &#39;chase@iespana.es&#39;, &#39;mya@ijustdontcare.com&#39;, &#39;ramona@uole.com&#39;]</span>
+</pre></div>
+</div>
+<p><strong>Lorem ipsum</strong>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">random_words</span> <span class="kn">import</span> <span class="n">LoremIpsum</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">li</span> <span class="o">=</span> <span class="n">LoremIpsum</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">li</span><span class="o">.</span><span class="n">get_sentence</span><span class="p">()</span>
+<span class="go">&#39;Luctus molestie mazim netus temporsuspendisse, tristique nihil vestibulumnulla clita possim.&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">li</span><span class="o">.</span><span class="n">get_sentences</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="go">&#39;Esse erosin magnis cursus, in ullamcorper sapien et accusam. Arcu fringilla metusdonec. Magna tempus elitr lorem esse antesuspendisse, mi fusce luctus lacusnulla nullam porta. Takimata tation porttitor, amet aliquammauris enimsed dapibus. Assum lectus accusam fermentumfusce, iaculis turpis senectus id nunccurabitur.&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">li</span><span class="o">.</span><span class="n">get_sentences_list</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="go">[&#39;Platea egestas delenit curae iaculis ullamcorper.&#39;, &#39;Felissed sagittis volutpat vitae, lacus nullam massapellentesque urnapraesent.&#39;, &#39;Dapibusnam vitae nulla, consectetuer conguenulla luptatum urnamorbi.&#39;, &#39;Ante nostra vero nihil eu odio.&#39;, &#39;Invidunt interdum condimentum ametduis, leopraesent tempus placerat aaenean ad.&#39;]</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to random_words&#8217;s documentation!</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="random_words.html"
+                        title="next chapter">random_words Package</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/how_to_use.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="random_words.html" title="random_words Package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to random_words’s documentation!"
+             >previous</a> |</li>
+        <li><a href="index.html">random_words  documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Author.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>

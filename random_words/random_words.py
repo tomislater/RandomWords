@@ -9,23 +9,25 @@ main_dir = os.path.split(os.path.abspath(__file__))[0]
 
 
 class Random(dict):
+
     def __init__(self, file):
+        self.types_file = {
+            'nouns': self.load_nouns,
+            'nicknames': self.load_nicknames,
+            'dmails': self.load_dmails,
+        }
+
         self.load_file(file)
 
     def load_file(self, file):
-        """Opening file.
-
+        """
         :param str file: filename
         """
-        if file == 'nouns':
-            self.load_nouns(file)
-        elif file == 'nicknames':
-            self.load_nicknames(file)
-        elif file == 'dmails':
-            self.load_dmails(file)
+        self.types_file[file](file)
 
     def load_nouns(self, file):
-        """Load dict from file for random words.
+        """
+        Load dict from file for random words.
 
         :param str file: filename
         """
@@ -33,7 +35,8 @@ class Random(dict):
             self.nouns = ujson.load(f)
 
     def load_dmails(self, file):
-        """Load list from file for random mails
+        """
+        Load list from file for random mails
 
         :param str file: filename
         """
@@ -41,7 +44,8 @@ class Random(dict):
             self['domains'] = frozenset(ujson.load(f))
 
     def load_nicknames(self, file):
-        """Load dict from file for random nicknames.
+        """
+        Load dict from file for random nicknames.
 
         :param str file: filename
         """
@@ -49,7 +53,8 @@ class Random(dict):
             self.nicknames = ujson.load(f)
 
     def check_count(self, count):
-        """Checks count
+        """
+        Checks count
 
         :param int count: count number ;)
         :raises: ValueError
@@ -61,12 +66,14 @@ class Random(dict):
 
 
 class RandomWords(Random):
+
     def __init__(self):
         super(RandomWords, self).__init__('nouns')
         self.available_letters = 'qwertyuiopasdfghjklzcvbnm'
 
     def random_word(self, letter=None):
-        """Returns random word.
+        """
+        Return random word.
 
         :param str letter: letter
         :rtype: str
@@ -75,7 +82,8 @@ class RandomWords(Random):
         return self.random_words(letter)[0]
 
     def random_words(self, letter=None, count=1):
-        """Returns list of random words.
+        """
+        Returns list of random words.
 
         :param str letter: letter
         :param int count: how much words
@@ -86,7 +94,8 @@ class RandomWords(Random):
         self.check_count(count)
 
         if letter is None:
-            all_words = list(itertools.chain.from_iterable(self.nouns.values()))
+            all_words = list(
+                itertools.chain.from_iterable(self.nouns.values()))
 
             try:
                 words = random.sample(all_words, count)
@@ -99,7 +108,9 @@ class RandomWords(Random):
             raise ValueError('Param "letter" must be string.')
 
         elif letter not in self.available_letters:
-            raise ValueError('Param "letter" must be in {0}.'.format(self.available_letters))
+            raise ValueError(
+                'Param "letter" must be in {0}.'.format(
+                    self.available_letters))
 
         elif letter in self.available_letters:
             try:
@@ -118,20 +129,25 @@ class RandomNicknames(Random):
         self.available_letters = 'qwertyuiopasdfghjklzxcvbnm'
 
     def random_nick(self, letter=None, gender=None):
-        """Returns random nick.
+        """
+        Return random nick.
 
         :param str letter: letter
-        :param str gender: 'f' for female, 'm' for male and None for both
+
+        :param str gender: ``'f'`` for female, ``'m'`` for male and None for\
+            both
+
         :rtype: str
         :returns: random nick
         """
         return self.random_nicks(letter, gender)[0]
 
     def random_nicks(self, letter=None, gender=None, count=1):
-        """Returns list of random nicks.
+        """
+        Return list of random nicks.
 
         :param str letter: letter
-        :param str gender: 'f' for female, 'm' for male and None for both
+        :param str gender: ``'f'`` for female, ``'m'`` for male and None for both
         :param int count: how much nicks
         :rtype: list
         :returns: list of random nicks
@@ -148,7 +164,8 @@ class RandomNicknames(Random):
             else:
                 g = gender
 
-            all_nicks = list(itertools.chain.from_iterable(self.nicknames[g].values()))
+            all_nicks = list(
+                itertools.chain.from_iterable(self.nicknames[g].values()))
 
             try:
                 nicks = random.sample(all_nicks, count)
@@ -161,7 +178,9 @@ class RandomNicknames(Random):
             raise ValueError('Param "letter" must be string.')
 
         elif letter not in self.available_letters:
-            raise ValueError('Param "letter" must be in "{0}".'.format(self.available_letters))
+            raise ValueError(
+                'Param "letter" must be in "{0}".'.format(
+                    self.available_letters))
 
         elif letter in self.available_letters:
             if gender:
@@ -185,19 +204,26 @@ class RandomEmails(Random):
         self.rn = RandomNicknames()
 
     def randomMail(self):
-        """Method returns random e-mail
+        """
+        Return random e-mail.
 
         :rtype: str
-        :returns: random e-mail"""
+        :returns: random e-mail
+        """
         return self.randomMails()[0]
 
     def randomMails(self, count=1):
-        """Method returns random e-mails
+        """
+        Return random e-mails.
 
         :rtype: list
-        :returns: list of random e-mails"""
+        :returns: list of random e-mails
+        """
         self.check_count(count)
         random_nicks = self.rn.random_nicks(count=count)
         random_domains = random.sample(self['domains'], count)
 
-        return [nick.lower() + "@" + domain for nick, domain in zip(random_nicks, random_domains)]
+        return [
+            nick.lower() + "@" + domain for nick, domain in zip(random_nicks,
+                                                                random_domains)
+        ]

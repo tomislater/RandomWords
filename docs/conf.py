@@ -41,7 +41,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'random_words'
-copyright = u'2013, Author'
+copyright = u'2013, Tomasz Święcicki'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -252,9 +252,9 @@ texinfo_documents = [
 
 # Bibliographic Dublin Core info.
 epub_title = u'random_words'
-epub_author = u'Author'
-epub_publisher = u'Author'
-epub_copyright = u'2013, Author'
+epub_author = u'Tomasz Święcicki'
+epub_publisher = u'Tomasz Święcicki'
+epub_copyright = u'2013, Tomasz Święcicki'
 
 # The language of the text. It defaults to the language option
 # or en if the language is not set.

@@ -58,23 +58,25 @@
 
 
 <div class="viewcode-block" id="Random"><a class="viewcode-back" href="../../random_words.html#random_words.random_words.Random">[docs]</a><span class="k">class</span> <span class="nc">Random</span><span class="p">(</span><span class="nb">dict</span><span class="p">):</span>
+
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">file</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">types_file</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s">&#39;nouns&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_nouns</span><span class="p">,</span>
+            <span class="s">&#39;nicknames&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_nicknames</span><span class="p">,</span>
+            <span class="s">&#39;dmails&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_dmails</span><span class="p">,</span>
+        <span class="p">}</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">load_file</span><span class="p">(</span><span class="nb">file</span><span class="p">)</span>
 
 <div class="viewcode-block" id="Random.load_file"><a class="viewcode-back" href="../../random_words.html#random_words.random_words.Random.load_file">[docs]</a>    <span class="k">def</span> <span class="nf">load_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">file</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Opening file.</span>
-
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        :param str file: filename</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="nb">file</span> <span class="o">==</span> <span class="s">&#39;nouns&#39;</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">load_nouns</span><span class="p">(</span><span class="nb">file</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="nb">file</span> <span class="o">==</span> <span class="s">&#39;nicknames&#39;</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">load_nicknames</span><span class="p">(</span><span class="nb">file</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="nb">file</span> <span class="o">==</span> <span class="s">&#39;dmails&#39;</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">load_dmails</span><span class="p">(</span><span class="nb">file</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">types_file</span><span class="p">[</span><span class="nb">file</span><span class="p">](</span><span class="nb">file</span><span class="p">)</span>
 </div>
 <div class="viewcode-block" id="Random.load_nouns"><a class="viewcode-back" href="../../random_words.html#random_words.random_words.Random.load_nouns">[docs]</a>    <span class="k">def</span> <span class="nf">load_nouns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">file</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Load dict from file for random words.</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Load dict from file for random words.</span>
 
 <span class="sd">        :param str file: filename</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -82,7 +84,8 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">nouns</span> <span class="o">=</span> <span class="n">ujson</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 </div>
 <div class="viewcode-block" id="Random.load_dmails"><a class="viewcode-back" href="../../random_words.html#random_words.random_words.Random.load_dmails">[docs]</a>    <span class="k">def</span> <span class="nf">load_dmails</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">file</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Load list from file for random mails</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Load list from file for random mails</span>
 
 <span class="sd">        :param str file: filename</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -90,7 +93,8 @@
             <span class="bp">self</span><span class="p">[</span><span class="s">&#39;domains&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">(</span><span class="n">ujson</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
 </div>
 <div class="viewcode-block" id="Random.load_nicknames"><a class="viewcode-back" href="../../random_words.html#random_words.random_words.Random.load_nicknames">[docs]</a>    <span class="k">def</span> <span class="nf">load_nicknames</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">file</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Load dict from file for random nicknames.</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Load dict from file for random nicknames.</span>
 
 <span class="sd">        :param str file: filename</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -98,7 +102,8 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">nicknames</span> <span class="o">=</span> <span class="n">ujson</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 </div>
 <div class="viewcode-block" id="Random.check_count"><a class="viewcode-back" href="../../random_words.html#random_words.random_words.Random.check_count">[docs]</a>    <span class="k">def</span> <span class="nf">check_count</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">count</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Checks count</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Checks count</span>
 
 <span class="sd">        :param int count: count number ;)</span>
 <span class="sd">        :raises: ValueError</span>
@@ -110,12 +115,14 @@
 
 </div></div>
 <div class="viewcode-block" id="RandomWords"><a class="viewcode-back" href="../../random_words.html#random_words.random_words.RandomWords">[docs]</a><span class="k">class</span> <span class="nc">RandomWords</span><span class="p">(</span><span class="n">Random</span><span class="p">):</span>
+
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">RandomWords</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s">&#39;nouns&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">available_letters</span> <span class="o">=</span> <span class="s">&#39;qwertyuiopasdfghjklzcvbnm&#39;</span>
 
 <div class="viewcode-block" id="RandomWords.random_word"><a class="viewcode-back" href="../../random_words.html#random_words.random_words.RandomWords.random_word">[docs]</a>    <span class="k">def</span> <span class="nf">random_word</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">letter</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returns random word.</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return random word.</span>
 
 <span class="sd">        :param str letter: letter</span>
 <span class="sd">        :rtype: str</span>
@@ -124,7 +131,8 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">random_words</span><span class="p">(</span><span class="n">letter</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 </div>
 <div class="viewcode-block" id="RandomWords.random_words"><a class="viewcode-back" href="../../random_words.html#random_words.random_words.RandomWords.random_words">[docs]</a>    <span class="k">def</span> <span class="nf">random_words</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">letter</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returns list of random words.</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns list of random words.</span>
 
 <span class="sd">        :param str letter: letter</span>
 <span class="sd">        :param int count: how much words</span>
@@ -135,7 +143,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">check_count</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">letter</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="n">all_words</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nouns</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+            <span class="n">all_words</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span>
+                <span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nouns</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
 
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">words</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">all_words</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
@@ -148,7 +157,9 @@
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&#39;Param &quot;letter&quot; must be string.&#39;</span><span class="p">)</span>
 
         <span class="k">elif</span> <span class="n">letter</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">available_letters</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&#39;Param &quot;letter&quot; must be in {0}.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">available_letters</span><span class="p">))</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s">&#39;Param &quot;letter&quot; must be in {0}.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">available_letters</span><span class="p">))</span>
 
         <span class="k">elif</span> <span class="n">letter</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">available_letters</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
@@ -167,20 +178,25 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">available_letters</span> <span class="o">=</span> <span class="s">&#39;qwertyuiopasdfghjklzxcvbnm&#39;</span>
 
 <div class="viewcode-block" id="RandomNicknames.random_nick"><a class="viewcode-back" href="../../random_words.html#random_words.random_words.RandomNicknames.random_nick">[docs]</a>    <span class="k">def</span> <span class="nf">random_nick</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">letter</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">gender</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returns random nick.</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return random nick.</span>
 
 <span class="sd">        :param str letter: letter</span>
-<span class="sd">        :param str gender: &#39;f&#39; for female, &#39;m&#39; for male and None for both</span>
+
+<span class="sd">        :param str gender: ``&#39;f&#39;`` for female, ``&#39;m&#39;`` for male and None for\</span>
+<span class="sd">            both</span>
+
 <span class="sd">        :rtype: str</span>
 <span class="sd">        :returns: random nick</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">random_nicks</span><span class="p">(</span><span class="n">letter</span><span class="p">,</span> <span class="n">gender</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 </div>
 <div class="viewcode-block" id="RandomNicknames.random_nicks"><a class="viewcode-back" href="../../random_words.html#random_words.random_words.RandomNicknames.random_nicks">[docs]</a>    <span class="k">def</span> <span class="nf">random_nicks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">letter</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">gender</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returns list of random nicks.</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return list of random nicks.</span>
 
 <span class="sd">        :param str letter: letter</span>
-<span class="sd">        :param str gender: &#39;f&#39; for female, &#39;m&#39; for male and None for both</span>
+<span class="sd">        :param str gender: ``&#39;f&#39;`` for female, ``&#39;m&#39;`` for male and None for both</span>
 <span class="sd">        :param int count: how much nicks</span>
 <span class="sd">        :rtype: list</span>
 <span class="sd">        :returns: list of random nicks</span>
@@ -197,7 +213,8 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">g</span> <span class="o">=</span> <span class="n">gender</span>
 
-            <span class="n">all_nicks</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nicknames</span><span class="p">[</span><span class="n">g</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+            <span class="n">all_nicks</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span>
+                <span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nicknames</span><span class="p">[</span><span class="n">g</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
 
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">nicks</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">all_nicks</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
@@ -210,7 +227,9 @@
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&#39;Param &quot;letter&quot; must be string.&#39;</span><span class="p">)</span>
 
         <span class="k">elif</span> <span class="n">letter</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">available_letters</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&#39;Param &quot;letter&quot; must be in &quot;{0}&quot;.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">available_letters</span><span class="p">))</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s">&#39;Param &quot;letter&quot; must be in &quot;{0}&quot;.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">available_letters</span><span class="p">))</span>
 
         <span class="k">elif</span> <span class="n">letter</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">available_letters</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">gender</span><span class="p">:</span>
@@ -234,22 +253,29 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">rn</span> <span class="o">=</span> <span class="n">RandomNicknames</span><span class="p">()</span>
 
 <div class="viewcode-block" id="RandomEmails.randomMail"><a class="viewcode-back" href="../../random_words.html#random_words.random_words.RandomEmails.randomMail">[docs]</a>    <span class="k">def</span> <span class="nf">randomMail</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Method returns random e-mail</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return random e-mail.</span>
 
 <span class="sd">        :rtype: str</span>
-<span class="sd">        :returns: random e-mail&quot;&quot;&quot;</span>
+<span class="sd">        :returns: random e-mail</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">randomMails</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 </div>
 <div class="viewcode-block" id="RandomEmails.randomMails"><a class="viewcode-back" href="../../random_words.html#random_words.random_words.RandomEmails.randomMails">[docs]</a>    <span class="k">def</span> <span class="nf">randomMails</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Method returns random e-mails</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return random e-mails.</span>
 
 <span class="sd">        :rtype: list</span>
-<span class="sd">        :returns: list of random e-mails&quot;&quot;&quot;</span>
+<span class="sd">        :returns: list of random e-mails</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">check_count</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
         <span class="n">random_nicks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rn</span><span class="o">.</span><span class="n">random_nicks</span><span class="p">(</span><span class="n">count</span><span class="o">=</span><span class="n">count</span><span class="p">)</span>
         <span class="n">random_domains</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s">&#39;domains&#39;</span><span class="p">],</span> <span class="n">count</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="p">[</span><span class="n">nick</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot;@&quot;</span> <span class="o">+</span> <span class="n">domain</span> <span class="k">for</span> <span class="n">nick</span><span class="p">,</span> <span class="n">domain</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">random_nicks</span><span class="p">,</span> <span class="n">random_domains</span><span class="p">)]</span></div></div>
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="n">nick</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot;@&quot;</span> <span class="o">+</span> <span class="n">domain</span> <span class="k">for</span> <span class="n">nick</span><span class="p">,</span> <span class="n">domain</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">random_nicks</span><span class="p">,</span>
+                                                                <span class="n">random_domains</span><span class="p">)</span>
+        <span class="p">]</span></div></div>
 </pre></div>
 
           </div>
@@ -288,7 +314,7 @@
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2013, Author.
+        &copy; Copyright 2013, Tomasz Święcicki.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
     </div>
   </body>

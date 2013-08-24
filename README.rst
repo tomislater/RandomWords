@@ -38,4 +38,4 @@ or::
 How to use
 ----------
 
-Please see `documentation <http://how.to.use`_
+Please see `documentation <https://randomwords.readthedocs.org/en/latest/how_to_use.html>`_

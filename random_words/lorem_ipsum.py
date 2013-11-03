@@ -73,4 +73,4 @@ class LoremIpsum(object):
 
         sentence = ' '.join(list_words).replace(' ,', ',')
 
-        return sentence[0].upper() + sentence[1:] + '.'
+        return sentence.capitalize() + '.'

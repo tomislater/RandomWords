@@ -2,8 +2,8 @@
 
 import os
 import ujson
-import random
-import itertools
+from random import sample
+from itertools import chain
 
 main_dir = os.path.split(os.path.abspath(__file__))[0]
 
@@ -95,10 +95,10 @@ class RandomWords(Random):
 
         if letter is None:
             all_words = list(
-                itertools.chain.from_iterable(self.nouns.values()))
+                chain.from_iterable(self.nouns.values()))
 
             try:
-                words = random.sample(all_words, count)
+                words = sample(all_words, count)
             except ValueError:
                 len_sample = len(all_words)
                 raise ValueError('Param "count" must be less than {0}. \
@@ -114,7 +114,7 @@ class RandomWords(Random):
 
         elif letter in self.available_letters:
             try:
-                words = random.sample(self.nouns[letter], count)
+                words = sample(self.nouns[letter], count)
             except ValueError:
                 len_sample = len(self.nouns[letter])
                 raise ValueError('Param "count" must be less than {0}. \
@@ -142,7 +142,7 @@ class RandomNicknames(Random):
         """
         return self.random_nicks(letter, gender)[0]
 
-    def random_nicks(self, letter=None, gender=None, count=1):
+    def random_nicks(self, letter=None, gender='u', count=1):
         """
         Return list of random nicks.
 
@@ -155,20 +155,17 @@ class RandomNicknames(Random):
         """
         self.check_count(count)
 
-        if gender not in ('f', 'm', None):
-            raise ValueError('Param "gender" must be in (f, m, None)')
+        if gender not in ('f', 'm', 'u'):
+            raise ValueError('Param "gender" must be in (f, m, u)')
 
         if letter is None:
-            if not gender:
-                g = 'u'
-            else:
-                g = gender
+            gender
 
             all_nicks = list(
-                itertools.chain.from_iterable(self.nicknames[g].values()))
+                chain.from_iterable(self.nicknames[gender].values()))
 
             try:
-                nicks = random.sample(all_nicks, count)
+                nicks = sample(all_nicks, count)
             except ValueError:
                 len_sample = len(all_nicks)
                 raise ValueError('Param "count" must be less than {0}. \
@@ -183,15 +180,10 @@ class RandomNicknames(Random):
                     self.available_letters))
 
         elif letter in self.available_letters:
-            if gender:
-                g = gender
-            else:
-                g = 'u'
-
             try:
-                nicks = random.sample(self.nicknames[g][letter], count)
+                nicks = sample(self.nicknames[gender][letter], count)
             except ValueError:
-                len_sample = len(self.nicknames[g][letter])
+                len_sample = len(self.nicknames[gender][letter])
                 raise ValueError('Param "count" must be less than {0}. \
 (It is only {0} nicks for letter "{1}")'.format(len_sample + 1, letter))
 
@@ -220,8 +212,9 @@ class RandomEmails(Random):
         :returns: list of random e-mails
         """
         self.check_count(count)
+
         random_nicks = self.rn.random_nicks(count=count)
-        random_domains = random.sample(self['domains'], count)
+        random_domains = sample(self['domains'], count)
 
         return [
             nick.lower() + "@" + domain for nick, domain in zip(random_nicks,

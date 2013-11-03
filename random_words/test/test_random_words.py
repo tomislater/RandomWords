@@ -137,9 +137,11 @@ class TestsRandomLoremIpsum:
 
     def test_lorem_sentence(self):
         assert '.' in self.li.get_sentence()
+        assert '.' == self.li.get_sentence()[-1]
 
     def test_lorem_sentences(self):
         assert '.' in self.li.get_sentences()
+        assert '.' == self.li.get_sentence()[-1]
 
     def test_lorem_sentences_list(self):
         assert type(self.li.get_sentences_list()) == list

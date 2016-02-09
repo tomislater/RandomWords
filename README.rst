@@ -9,14 +9,6 @@ RandomWords
     :target: https://coveralls.io/r/tomislater/RandomWords?branch=master
     :alt: Coverage Status
 
-.. image:: https://pypip.in/v/RandomWords/badge.png
-    :target: https://crate.io/packages/RandomWords/
-    :alt: Latest PyPI version
-
-.. image:: https://pypip.in/d/RandomWords/badge.png
-    :target: https://crate.io/packages/RandomWords/
-    :alt: Number of PyPI downloads
-
 Overview
 --------
 

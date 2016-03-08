@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import os
-import ujson
+import json
 import random
 
 main_dir = os.path.split(os.path.abspath(__file__))[0]
@@ -13,7 +13,7 @@ class LoremIpsum(object):
 
     def __init__(self):
         with open(os.path.join(main_dir, 'lorem_ipsum.dat'), 'r') as f:
-            self.words = frozenset(ujson.load(f))
+            self.words = frozenset(json.load(f))
 
     def get_sentence(self):
         """

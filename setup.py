@@ -43,7 +43,7 @@ setup(
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
     include_package_data=True,
-    install_requires=['ujson'],
+    install_requires=[],
     tests_require=['pytest'],
     cmdclass={'test': PyTest},
     test_suite='random_words.test.test_random_words',

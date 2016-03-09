@@ -7,7 +7,7 @@
 .. moduleauthor:: Tomek Święcicki <tomislater@gmail.com>
 """
 
-__version__ = '0.1.13'
+__version__ = '0.2.0'
 
 from .random_words import RandomWords
 from .random_words import RandomNicknames

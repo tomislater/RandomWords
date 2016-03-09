@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import os
-import ujson
+import json
 from random import sample
 from itertools import chain
 
@@ -32,7 +32,7 @@ class Random(dict):
         :param str file: filename
         """
         with open(os.path.join(main_dir, file + '.dat'), 'r') as f:
-            self.nouns = ujson.load(f)
+            self.nouns = json.load(f)
 
     def load_dmails(self, file):
         """
@@ -41,7 +41,7 @@ class Random(dict):
         :param str file: filename
         """
         with open(os.path.join(main_dir, file + '.dat'), 'r') as f:
-            self['domains'] = frozenset(ujson.load(f))
+            self['domains'] = frozenset(json.load(f))
 
     def load_nicknames(self, file):
         """
@@ -50,7 +50,7 @@ class Random(dict):
         :param str file: filename
         """
         with open(os.path.join(main_dir, file + '.dat'), 'r') as f:
-            self.nicknames = ujson.load(f)
+            self.nicknames = json.load(f)
 
     def check_count(self, count):
         """

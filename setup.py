@@ -20,7 +20,7 @@ class PyTest(TestCommand):
 
 setup(
     name='RandomWords',
-    version='0.2.0',
+    version='0.2.1',
     author='Tomek Święcicki',
     author_email='tomislater@gmail.com',
     packages=['random_words'],

@@ -19,6 +19,8 @@ class Random(dict):
 
         self.load_file(file)
 
+        super(Random, self).__init__()
+
     def load_file(self, file):
         """
         :param str file: filename
@@ -41,7 +43,7 @@ class Random(dict):
         :param str file: filename
         """
         with open(os.path.join(main_dir, file + '.dat'), 'r') as f:
-            self['domains'] = frozenset(json.load(f))
+            self.dmails = frozenset(json.load(f))
 
     def load_nicknames(self, file):
         """
@@ -52,7 +54,8 @@ class Random(dict):
         with open(os.path.join(main_dir, file + '.dat'), 'r') as f:
             self.nicknames = json.load(f)
 
-    def check_count(self, count):
+    @staticmethod
+    def check_count(count):
         """
         Checks count
 
@@ -68,8 +71,9 @@ class Random(dict):
 class RandomWords(Random):
 
     def __init__(self):
-        super(RandomWords, self).__init__('nouns')
         self.available_letters = 'qwertyuiopasdfghjklzcvbnm'
+
+        super(RandomWords, self).__init__('nouns')
 
     def random_word(self, letter=None):
         """
@@ -92,6 +96,8 @@ class RandomWords(Random):
         :raises: ValueError
         """
         self.check_count(count)
+
+        words = []
 
         if letter is None:
             all_words = list(
@@ -124,9 +130,11 @@ class RandomWords(Random):
 
 
 class RandomNicknames(Random):
+
     def __init__(self):
-        super(RandomNicknames, self).__init__('nicknames')
         self.available_letters = 'qwertyuiopasdfghjklzxcvbnm'
+
+        super(RandomNicknames, self).__init__('nicknames')
 
     def random_nick(self, letter=None, gender=None):
         """
@@ -155,11 +163,12 @@ class RandomNicknames(Random):
         """
         self.check_count(count)
 
+        nicks = []
+
         if gender not in ('f', 'm', 'u'):
             raise ValueError('Param "gender" must be in (f, m, u)')
 
         if letter is None:
-            gender
 
             all_nicks = list(
                 chain.from_iterable(self.nicknames[gender].values()))
@@ -191,9 +200,11 @@ class RandomNicknames(Random):
 
 
 class RandomEmails(Random):
+
     def __init__(self):
-        super(RandomEmails, self).__init__('dmails')
         self.rn = RandomNicknames()
+
+        super(RandomEmails, self).__init__('dmails')
 
     def randomMail(self):
         """
@@ -214,7 +225,7 @@ class RandomEmails(Random):
         self.check_count(count)
 
         random_nicks = self.rn.random_nicks(count=count)
-        random_domains = sample(self['domains'], count)
+        random_domains = sample(self.dmails, count)
 
         return [
             nick.lower() + "@" + domain for nick, domain in zip(random_nicks,

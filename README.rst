@@ -1,12 +1,12 @@
 RandomWords
 ===========
 
-.. image:: https://travis-ci.org/tomislater/RandomWords.png?branch=master
+.. image:: https://travis-ci.org/tomislater/RandomWords.svg?branch=master
     :target: https://travis-ci.org/tomislater/RandomWords
     :alt: Tests for RandomWords
 
-.. image:: https://coveralls.io/repos/tomislater/RandomWords/badge.png?branch=master
-    :target: https://coveralls.io/r/tomislater/RandomWords?branch=master
+.. image:: https://coveralls.io/repos/github/tomislater/RandomWords/badge.svg?branch=master
+    :target: https://coveralls.io/github/tomislater/RandomWords?branch=master
     :alt: Coverage Status
 
 Overview

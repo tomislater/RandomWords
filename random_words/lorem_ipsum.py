@@ -58,7 +58,8 @@ class LoremIpsum(object):
         """
         return ' '.join(self.get_sentences_list(sentences))
 
-    def make_sentence(self, list_words):
+    @staticmethod
+    def make_sentence(list_words):
         """
         Return a sentence from list of words.
 

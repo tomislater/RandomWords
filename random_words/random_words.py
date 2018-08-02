@@ -5,7 +5,7 @@ import json
 from random import sample
 from itertools import chain
 
-main_dir = os.path.split(os.path.abspath(__file__))[0]
+main_dir = os.path.dirname(os.path.abspath(__file__))
 
 
 class Random(dict):

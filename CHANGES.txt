@@ -1,3 +1,5 @@
+v0.3.0, 2020-06-20 -- Fix the mess with versions
+v0.2.3, 2020-06-20 -- Use dirname instead of split
 v0.2.2, 2020-06-20 -- Add python 3.7 and 3.8 to travis (remove 3.3)
 v0.2.1, 2017-03-04 -- Add python 3.6 to travis (remove 2.6 and 3.3)
 v0.2.0, 2016-03-09 -- Remove ujson for json

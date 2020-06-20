@@ -109,6 +109,9 @@ class TestsRandomNicknames:
         for letter in self.letters:
             pytest.raises(
                 ValueError, self.rn.random_nicks, letter, count=len_random)
+    
+    def test_random_nicks_letter_must_be_string(self):
+        pytest.raises(ValueError, self.rn.random_nicks, 0)
 
     def test_random_nicks_not_gender(self):
         pytest.raises(ValueError, self.rn.random_nicks, gender=[])

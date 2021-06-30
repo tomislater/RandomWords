@@ -31,3 +31,11 @@ How to use
 ----------
 
 Please see `documentation <https://randomwords.readthedocs.org/en/latest/how_to_use.html>`_
+
+
+Stargazers over time
+--------------------
+
+.. image:: https://starchart.cc/tomislater/RandomWords.svg
+    :target: https://starchart.cc/tomislater/RandomWords
+    :alt: Stargazers over time    

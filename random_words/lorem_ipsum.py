@@ -41,7 +41,7 @@ class LoremIpsum(object):
             num_rand_words = random.randint(self.MIN_WORDS, self.MAX_WORDS)
 
             random_sentence = self.make_sentence(
-                random.sample(self.words, num_rand_words))
+                random.sample(list(self.words), num_rand_words))
 
             sentences_list.append(random_sentence)
             sentences -= 1

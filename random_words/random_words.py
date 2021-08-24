@@ -225,7 +225,7 @@ class RandomEmails(Random):
         self.check_count(count)
 
         random_nicks = self.rn.random_nicks(count=count)
-        random_domains = sample(self.dmails, count)
+        random_domains = sample(list(self.dmails), count)
 
         return [
             nick.lower() + "@" + domain for nick, domain in zip(random_nicks,

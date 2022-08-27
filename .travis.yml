@@ -6,7 +6,7 @@ python:
   - '3.9'
   - '3.10'
 install:
-  - python setup.py install
+  - pip install .
   - pip install coverage
   - pip install coveralls
 script:

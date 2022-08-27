@@ -1,8 +1,8 @@
 RandomWords
 ===========
 
-.. image:: https://travis-ci.org/tomislater/RandomWords.svg?branch=master
-    :target: https://travis-ci.org/tomislater/RandomWords
+.. image:: https://app.travis-ci.com/tomislater/RandomWords.svg?branch=master
+    :target: https://travis-ci.com/tomislater/RandomWords
     :alt: Tests for RandomWords
 
 .. image:: https://coveralls.io/repos/github/tomislater/RandomWords/badge.svg?branch=master

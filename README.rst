@@ -9,6 +9,10 @@ RandomWords
     :target: https://coveralls.io/github/tomislater/RandomWords?branch=master
     :alt: Coverage Status
 
+.. image:: https://readthedocs.org/projects/randomwords/badge/?version=latest
+    :target: https://randomwords.readthedocs.io/en/latest/?badge=latest
+    :alt: Documentation Status
+
 Overview
 --------
 

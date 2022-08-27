@@ -9,7 +9,7 @@ from setuptools.command.test import test as TestCommand
 class PyTest(TestCommand):
     def finalize_options(self):
         TestCommand.finalize_options(self)
-        self.test_args = ['--strict', '--verbose', '--tb=long']
+        self.test_args = ['--strict-markers', '--verbose', '--tb=long']
         self.test_suite = True
 
     def run_tests(self):
@@ -45,7 +45,4 @@ setup(
     tests_require=['pytest'],
     cmdclass={'test': PyTest},
     test_suite='random_words.test.test_random_words',
-    extras_require={
-        'testing': ['pytest'],
-    },
 )

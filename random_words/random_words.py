@@ -55,7 +55,7 @@ class Random(dict):
             self.nicknames = json.load(f)
 
     @staticmethod
-    def check_count(count):
+    def check_int(a, count):
         """
         Checks count
 
@@ -63,9 +63,9 @@ class Random(dict):
         :raises: ValueError
         """
         if type(count) is not int:
-            raise ValueError('Param "count" must be int.')
+            raise ValueError('Param "' + a + '" must be int.')
         if count < 1:
-            raise ValueError('Param "count" must be greater than 0.')
+            raise ValueError('Param "' + a + '" must be greater than 0.')
 
 
 class RandomWords(Random):
@@ -75,56 +75,57 @@ class RandomWords(Random):
 
         super(RandomWords, self).__init__('nouns')
 
-    def random_word(self, letter=None):
+    def random_word(self, letter=None, min_letter_count=1):
         """
         Return random word.
 
         :param str letter: letter
+        :param int min_letter_count: minimum letter count
         :rtype: str
         :returns: random word
         """
-        return self.random_words(letter)[0]
+        return self.random_words(letter, min_letter_count)[0]
 
-    def random_words(self, letter=None, count=1):
+    def random_words(self, letter=None, min_letter_count=1, count=1):
         """
         Returns list of random words.
 
         :param str letter: letter
+        :param int min_letter_count: minimum letter count
         :param int count: how much words
         :rtype: list
         :returns: list of random words
         :raises: ValueError
         """
-        self.check_count(count)
+        self.check_int("count", count)
+        self.check_int("min_letter_count", min_letter_count)
 
         words = []
 
         if letter is None:
-            all_words = list(
-                chain.from_iterable(self.nouns.values()))
+            all_words = [w for w in chain.from_iterable(self.nouns.values()) if len(w) >= min_letter_count]
 
             try:
                 words = sample(all_words, count)
             except ValueError:
                 len_sample = len(all_words)
-                raise ValueError('Param "count" must be less than {0}. \
-(It is only {0} words)'.format(len_sample + 1, letter))
+                raise ValueError('Param "count" must be less than {0}. (There are only {0} words)'.format(len_sample, letter))
 
         elif type(letter) is not str:
             raise ValueError('Param "letter" must be string.')
 
         elif letter not in self.available_letters:
             raise ValueError(
-                'Param "letter" must be in {0}.'.format(
-                    self.available_letters))
+                'Param "letter" must be in {0}.'.format(self.available_letters))
 
         elif letter in self.available_letters:
+            all_nouns_letter = [w for w in self.nouns[letter] if len(w) >= min_letter_count]
+
             try:
-                words = sample(self.nouns[letter], count)
+                words = sample(all_nouns_letter, count)
             except ValueError:
-                len_sample = len(self.nouns[letter])
-                raise ValueError('Param "count" must be less than {0}. \
-(It is only {0} words for letter "{1}")'.format(len_sample + 1, letter))
+                len_sample = len(all_nouns_letter)
+                raise ValueError('Param "count" must be less than {0}. (There are only {0} words for letter "{1}")'.format(len_sample, letter))
 
         return words
 
@@ -161,7 +162,7 @@ class RandomNicknames(Random):
         :returns: list of random nicks
         :raises: ValueError
         """
-        self.check_count(count)
+        self.check_int("count", count)
 
         nicks = []
 
@@ -222,7 +223,7 @@ class RandomEmails(Random):
         :rtype: list
         :returns: list of random e-mails
         """
-        self.check_count(count)
+        self.check_int("count", count)
 
         random_nicks = self.rn.random_nicks(count=count)
         random_domains = sample(list(self.dmails), count)

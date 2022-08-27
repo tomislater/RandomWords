@@ -22,6 +22,18 @@ class TestsRandomWords:
             word = self.rw.random_word(letter)
             assert word[0] == letter
 
+    def test_random_word_with_min_letter_count(self):
+        for letter in self.letters:
+            word = self.rw.random_word(letter, min_letter_count=5)
+            assert word[0] == letter
+
+    def test_random_word_large_min_letter_count(self):
+        """
+        min_letter_count is too large.
+        """
+        for letter in self.letters:
+            pytest.raises(ValueError, self.rw.random_word, letter, min_letter_count=3443)
+
     def test_random_word_value_error(self):
         pytest.raises(ValueError, self.rw.random_word, 'x')
         pytest.raises(ValueError, self.rw.random_word, 0)
@@ -29,6 +41,10 @@ class TestsRandomWords:
         pytest.raises(ValueError, self.rw.random_word, 9)
         pytest.raises(ValueError, self.rw.random_word, ['u'])
         pytest.raises(ValueError, self.rw.random_word, 'fs')
+        
+        pytest.raises(ValueError, self.rw.random_word, min_letter_count=-1)
+        pytest.raises(ValueError, self.rw.random_word, min_letter_count=None)
+        pytest.raises(ValueError, self.rw.random_word, min_letter_count="fds")
 
     def test_random_words(self):
         for letter in self.letters:
@@ -36,19 +52,49 @@ class TestsRandomWords:
             for word in words:
                 assert word[0] == letter
 
-    def test_random_words_value_error(self):
+    def test_random_words_value_error_letter(self):
         pytest.raises(ValueError, self.rw.random_words, 'fa')
         pytest.raises(ValueError, self.rw.random_words, ['fha'])
         pytest.raises(ValueError, self.rw.random_words, 0)
         pytest.raises(ValueError, self.rw.random_words, -1)
-
-        pytest.raises(ValueError, self.rw.random_words, letter=None,
-                      count=1000000)
-
+        pytest.raises(ValueError, self.rw.random_words, letter=None, count=1000000)
+    
+    def test_random_words_value_error_count(self):
         pytest.raises(ValueError, self.rw.random_words, count=0)
         pytest.raises(ValueError, self.rw.random_words, count=None)
         pytest.raises(ValueError, self.rw.random_words, count=[8])
         pytest.raises(ValueError, self.rw.random_words, count=-5)
+
+    def test_random_words_value_error_min_letter_count(self):
+        pytest.raises(ValueError, self.rw.random_words, min_letter_count=0)
+        pytest.raises(ValueError, self.rw.random_words, min_letter_count=None)
+        pytest.raises(ValueError, self.rw.random_words, min_letter_count=[8])
+        pytest.raises(ValueError, self.rw.random_words, min_letter_count=-5)
+    
+    def test_random_words_large_min_letter_count(self):
+        min_letter_count = 15
+        words = self.rw.random_words(count=10, min_letter_count=min_letter_count)
+        for w in words:
+            assert len(w) >= min_letter_count
+    
+    def test_random_words_small_min_letter_count(self):
+        min_letter_count = 3
+        words = self.rw.random_words(count=1000, min_letter_count=min_letter_count)
+        for w in words:
+            assert len(w) >= min_letter_count
+    
+    def test_random_words_z_letter_min_letter_count(self):
+        """
+        There are not enough words for such query.
+        """
+        pytest.raises(ValueError, self.rw.random_words, "z", count=5, min_letter_count=15)
+    
+    def test_random_words_min_letter_count(self):
+        for letter in self.letters:
+            min_letter_count = random.randint(1, 5)
+            words = self.rw.random_words(letter, count=2, min_letter_count=min_letter_count)
+            for w in words:
+                assert len(w) >= min_letter_count
 
     def test_random_words_length_list(self):
         len_words = len(self.rw.random_words())

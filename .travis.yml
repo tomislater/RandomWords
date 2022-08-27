@@ -1,11 +1,11 @@
 language: python
+dist: bionic
 python:
   - '3.7'
   - '3.8'
   - '3.9'
   - '3.10'
 install:
-  - pip install importlib_metadata
   - python setup.py install
   - pip install coverage
   - pip install coveralls

@@ -20,7 +20,7 @@ class PyTest(TestCommand):
 
 setup(
     name='RandomWords',
-    version='0.3.0',
+    version='0.4.0',
     author='Tomek Święcicki',
     author_email='tomislater@gmail.com',
     packages=['random_words'],
@@ -34,12 +34,10 @@ setup(
         'Programming Language :: Python',
         'Natural Language :: English',
         'Development Status :: 5 - Production/Stable',
-        'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 3.4',
-        'Programming Language :: Python :: 3.5',
-        'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
     include_package_data=True,

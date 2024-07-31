@@ -3,7 +3,14 @@
 import sys
 
 from setuptools import setup
-from setuptools.command.test import test as TestCommand
+try:
+    from setuptools.command.test import test as TestCommand
+except ImportError:
+    # setuptools.command.test has been removed.
+    # The `setup` call is only necessary when defining this `cmdclass`, since
+    # building the project is no longer dependend on that.
+    # Therefore, there's no more to do here.
+    sys.exit()
 
 
 class PyTest(TestCommand):
@@ -18,34 +25,10 @@ class PyTest(TestCommand):
         sys.exit(errcode)
 
 
+# Use `PyTest` as a `cmdclass`.
 setup(
-    name='RandomWords',
-    version='0.4.0',
-    author='Tomek Święcicki',
-    author_email='tomislater@gmail.com',
-    packages=['random_words'],
-    url='https://github.com/tomislater/RandomWords',
-    license='LICENSE.txt',
-    description='A useful module for a random text, e-mails and lorem ipsum.',
-    long_description=open('README.rst').read(),
-    classifiers=[
-        'Intended Audience :: Developers',
-        'License :: OSI Approved :: MIT License',
-        'Programming Language :: Python',
-        'Natural Language :: English',
-        'Development Status :: 5 - Production/Stable',
-        'Programming Language :: Python :: 3.7',
-        'Programming Language :: Python :: 3.8',
-        'Programming Language :: Python :: 3.9',
-        'Programming Language :: Python :: 3.10',
-        'Topic :: Software Development :: Libraries :: Python Modules',
-    ],
-    include_package_data=True,
-    install_requires=[],
     tests_require=['pytest'],
     cmdclass={'test': PyTest},
     test_suite='random_words.test.test_random_words',
-    extras_require={
-         'testing': ['pytest'],
-     },
+    extras_require={ 'testing': ['pytest'] }
 )

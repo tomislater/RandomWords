@@ -1,0 +1,29 @@
+[project]
+name = "RandomWords"
+version = "0.4.0"
+description = "A useful module for a random text, e-mails and lorem ipsum."
+readme = "README.rst"
+classifiers = [
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Natural Language :: English",
+    "Development Status :: 5 - Production/Stable",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Topic :: Software Development :: Libraries :: Python Modules"
+]
+dependencies = []
+license = {file = "LICENSE.txt"}
+
+[[project.authors]]
+name = "Tomek Święcicki"
+email = "tomislater@gmail.com"
+
+[project.urls]
+homepage = "https://github.com/tomislater/RandomWords"
+
+[tool.setuptools]
+packages = [ "random_words" ]
